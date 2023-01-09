@@ -858,13 +858,6 @@
   </url>
   
   <url>
-    <loc>https://aleryxiao.github.io/categories/Tavg/Iris/</loc>
-    <lastmod>2023-01-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://aleryxiao.github.io/categories/Tavg/Flos/</loc>
     <lastmod>2023-01-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -879,6 +872,13 @@
   </url>
   
   <url>
+    <loc>https://aleryxiao.github.io/categories/Tavg/Iris/</loc>
+    <lastmod>2023-01-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://aleryxiao.github.io/categories/Tavg/SakuraA/</loc>
     <lastmod>2023-01-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -886,14 +886,14 @@
   </url>
   
   <url>
-    <loc>https://aleryxiao.github.io/categories/Tavg/Rose/</loc>
+    <loc>https://aleryxiao.github.io/categories/Tavg/SakuraR/</loc>
     <lastmod>2023-01-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://aleryxiao.github.io/categories/Tavg/SakuraR/</loc>
+    <loc>https://aleryxiao.github.io/categories/Tavg/Rose/</loc>
     <lastmod>2023-01-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
