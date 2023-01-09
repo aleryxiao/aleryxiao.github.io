@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.18.5">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>python：matplotlib - 極楽浄土</title>
+
+  
+    <meta name="description" content="坐标轴字体大小 import matplotlib.pyplot as plt plt.xticks([1, 2, 3, 4, 5, 6, 7, 8]) plt.tick_params(labelsize&#x3D;13)  #刻度字体大小13  中文字体缺失凌云飞鸿的博客-CSDN博客_matplotlib字体缺失 pyplot 并不默认支持中文显示，也没有自带中文字体，因此需要自行下载所需字体">
+<meta property="og:type" content="website">
+<meta property="og:title" content="matplotlib">
+<meta property="og:url" content="https://aleryxiao.github.io/Engineering/python/Matplotlib.html">
+<meta property="og:site_name" content="極楽浄土">
+<meta property="og:description" content="坐标轴字体大小 import matplotlib.pyplot as plt plt.xticks([1, 2, 3, 4, 5, 6, 7, 8]) plt.tick_params(labelsize&#x3D;13)  #刻度字体大小13  中文字体缺失凌云飞鸿的博客-CSDN博客_matplotlib字体缺失 pyplot 并不默认支持中文显示，也没有自带中文字体，因此需要自行下载所需字体">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-27T14:19:34.000Z">
+<meta property="article:modified_time" content="2023-01-03T04:31:04.430Z">
+<meta property="article:author" content="AleryXiao">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="極楽浄土" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="/site_assets/favicon.jpg">
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='wiki'>
+    
+
+  
+
+
+
+
+<div class="widgets"><widget class="widget-wrapper logo-wrap wiki"><div class="widget-body"><a style="filter: grayscale(100%)" class="wiki-home cap" href="/"><svg aria-hidden="true" viewBox="0 0 16 16" width="1rem" height="1rem" fill="currentColor"><path fill-rule="evenodd" d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"></path></svg>所有项目</a><a class="title" href="/Engineering/python/index.html"><div class="main" ff="title">python</div><div class="sub normal cap">about python</div><div class="sub hover cap" style="opacity:0"> @AleryXiao</div></a></div></widget>
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/Engineering/python/" placeholder="在 /Engineering/python/ 中搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+
+
+<widget class="widget-wrapper toc multi" id="data-toc"><div class="widget-header cap dis-select"><span class="name">Set Environment</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/index.html#start"><span class="toc-text">Index</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/Vscode%E9%85%8D%E7%BD%AE.html"><span class="toc-text">Vscode配置</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/PipenV+Pyinstaller.html"><span class="toc-text">PipenV+Pyinstaller</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/Xpath.html"><span class="toc-text">Xpath</span></a></div></div><div class="widget-header cap dis-select"><span class="name">Std Grammar</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/f-string.html"><span class="toc-text">f-string</span></a></div></div><div class="widget-header cap dis-select"><span class="name">Ocr</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/CUDA%20&%20pip.html"><span class="toc-text">CUDA & pip</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/EasyOCR.html"><span class="toc-text">EasyOCR</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/%E8%85%BE%E8%AE%AF%E4%BA%91OCR.html"><span class="toc-text">腾讯云OCR</span></a></div></div><div class="widget-header cap dis-select"><span class="name">库使用</span></div><div class="widget-body fs14"><div class="doc-tree active"><a class="doc-tree-link active" href="/Engineering/python/Matplotlib.html"><span class="toc-text">matplotlib</span></a><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9D%90%E6%A0%87%E8%BD%B4%E5%AD%97%E4%BD%93%E5%A4%A7%E5%B0%8F"><span class="toc-text">坐标轴字体大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%87%E5%AD%97%E4%BD%93%E7%BC%BA%E5%A4%B1"><span class="toc-text">中文字体缺失</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93"><span class="toc-text">安装字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-text">设置参数</span></a></li></ol></li></ol></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/Tkinter.html"><span class="toc-text">Tkinter</span></a></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+  
+  
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" id="home" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" id="menu" href="/wiki/">项目</a><span class="sep"></span><a class="cap breadcrumb" id="proj" href="/Engineering/python/index.html">python</a></div><div id="post-meta">更新于&nbsp;<time datetime="2023-01-03T04:31:04.430Z">2023-01-03</time></div></div>
+
+  <article class='md-text content wiki'>
+  <h1 class="article-title"><span>matplotlib</span></h1>
+  <h2 id="坐标轴字体大小"><a href="#坐标轴字体大小" class="headerlink" title="坐标轴字体大小"></a>坐标轴字体大小</h2><blockquote>
+<p>import matplotlib.pyplot as plt plt.xticks([1, 2, 3, 4, 5, 6, 7, 8]) plt.tick_params(labelsize&#x3D;13)  #刻度字体大小13</p>
+</blockquote>
+<h2 id="中文字体缺失"><a href="#中文字体缺失" class="headerlink" title="中文字体缺失"></a>中文字体缺失</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/FSKEps/article/details/115348176?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-115348176-blog-108432781.pc_relevant_recovery_v2&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~CTRLIST~Rate-1-115348176-blog-108432781.pc_relevant_recovery_v2&utm_relevant_index=1">凌云飞鸿的博客-CSDN博客_matplotlib字体缺失</a></p>
+<p>pyplot 并不默认支持中文显示，也没有自带中文字体，因此需要自行下载所需字体，并修改 rcParams 参数来显示中文。下面以 SimHei （黑体）字体为例进行说明。</p>
+<h3 id="安装字体"><a href="#安装字体" class="headerlink" title="安装字体"></a>安装字体</h3><p>１．下载 SimHei.ttf 字体文件<br>２．查看 matplotlib 的字体路径</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import matplotlib    </span><br><span class="line">print(matplotlib.matplotlib_fname())</span><br></pre></td></tr></table></figure>
+
+<p>得到的路径（如<code>~/.local/lib/python3.6/site-packages/matplotlib/mpl-data/matplotlibrc</code>)是 matplotlib 参数预加载文件<code>matplotlibrc</code>的路径，则字体的存放路径为<code>~/.local/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf</code>。<br>将下载好的字体文件复制到该目录下</p>
+<p>３．删除 matplotlib 的缓冲目录<br>查看 matplotlib 的字体缓存路径：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import matplotlib</span><br><span class="line">print(matplotlib.get_cachedir())</span><br></pre></td></tr></table></figure>
+
+<p>得到的路径如<code>~/.cache/matplotlib</code>，在终端使用<code>rm -rf ~/.cache/matplotlib</code>命令删除缓存目录。<br>这样做之后，在使用 matplotlib 绘图时，会自动生成新的缓存目录。</p>
+<h3 id="设置参数"><a href="#设置参数" class="headerlink" title="设置参数"></a>设置参数</h3><p>使用 matplotlib 绘图时，添加以下几行代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import matplotlib</span><br><span class="line"></span><br><span class="line">matplotlib.rcParams[&#x27;font.family&#x27;] = &#x27;SimHei&#x27;</span><br><span class="line">matplotlib.rcParams[&#x27;font.size&#x27;] = 10</span><br><span class="line">matplotlib.rcParams[&#x27;axes.unicode_minus&#x27;]=False</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27; 使用下面语句也可以</span><br><span class="line">plt.rcParams[&#x27;font.family&#x27;] = &#x27;SimHei&#x27;</span><br><span class="line">plt.rcParams[&#x27;font.size&#x27;] = 10</span><br><span class="line">plt.rcParams[&#x27;axes.unicode_minus&#x27;]=False</span><br><span class="line">&#x27;&#x27;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以在绘图时使用该中文字体了。也可以在前面提到的 matplotlibrc 文件中修改这些参数。这里选择在代码中修改。</p>
+<p>几种常用的中文字体：</p>
+<table>
+<thead>
+<tr>
+<th>中文字体</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SimHei</td>
+<td>中文黑体</td>
+</tr>
+<tr>
+<td>Kaiti</td>
+<td>中文楷体</td>
+</tr>
+<tr>
+<td>LiSu</td>
+<td>中文隶书</td>
+</tr>
+<tr>
+<td>FangSong</td>
+<td>中文仿宋</td>
+</tr>
+<tr>
+<td>YouYuan</td>
+<td>中文幼圆</td>
+</tr>
+<tr>
+<td>STSong</td>
+<td>华文宋体</td>
+</tr>
+</tbody></table>
+
+  
+
+
+  </article>
+  
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">回顾上一篇</div><a href="/Engineering/python/%E8%85%BE%E8%AE%AF%E4%BA%91OCR.html">腾讯云OCR</a></div><div class="item" id="next"><div class="note">接下来阅读</div><a href="/Engineering/python/Tkinter.html">Tkinter</a></div></section></div>
+
+  
+
+  <div class='related-wrap md-text reveal' id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>评论区仅供交流~</p>
+
+    </section>
+    <section class='body cmt-body giscus'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="giscus" data-repo="aleryxiao/aleryxiao.github.io" data-repo-id="R_kgDOIdw0jw" data-category="Announcements" data-category-id="DIC_kwDOIdw0j84CTXeH" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous"></div>
+
+    </section>
+  </div>
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客</span><a href="/">近期</a><a href="/categories">分类</a><a href="/tags">标签</a><a href="/">归档</a></div><div class="sitemap-group"><span class="fs14">整理</span><a href="/wiki">文件夹</a></div><div class="sitemap-group"><span class="fs14">社交</span><a href="/dynamic">动态</a><a href="/friend">友链</a><a href="/guestbook">留言板</a></div><div class="sitemap-group"><span class="fs14">更多</span><a href="/about">关于</a><a target="_blank" rel="noopener" href="https://github.com/aleryxiao">GitHub</a></div></div><div class="text"><p>本站由 <a target="_blank" rel="noopener" href="https://space.bilibili.com/19610138">@AleryXiao</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.18.5';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.18.5';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadJS() {
+    const els = document.querySelectorAll("#comments #giscus");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://giscus.app/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    loadJS();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.18.5">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>python：Xpath - 極楽浄土</title>
+
+  
+    <meta name="description" content="Reference:  Xpath的使用(详细教学)  1. Xpath的概览XPath的选择功能十分强大，他提供了非常简洁明了的路径选择表达式。另外，它还提供了100多个内建函数，用于字符串，数值，时间的匹配以及节点，序列的处理。几乎所有我们想要定位的节点。都可以用XPath选择。  2. XPath常用规则   表达式 描述    nodename 选取此节点的所有子节点   &#x2F; 从">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Xpath">
+<meta property="og:url" content="https://aleryxiao.github.io/Engineering/python/Xpath.html">
+<meta property="og:site_name" content="極楽浄土">
+<meta property="og:description" content="Reference:  Xpath的使用(详细教学)  1. Xpath的概览XPath的选择功能十分强大，他提供了非常简洁明了的路径选择表达式。另外，它还提供了100多个内建函数，用于字符串，数值，时间的匹配以及节点，序列的处理。几乎所有我们想要定位的节点。都可以用XPath选择。  2. XPath常用规则   表达式 描述    nodename 选取此节点的所有子节点   &#x2F; 从">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-11T09:16:38.000Z">
+<meta property="article:modified_time" content="2023-01-03T04:30:52.650Z">
+<meta property="article:author" content="AleryXiao">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="極楽浄土" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="/site_assets/favicon.jpg">
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='wiki'>
+    
+
+  
+
+
+
+
+<div class="widgets"><widget class="widget-wrapper logo-wrap wiki"><div class="widget-body"><a style="filter: grayscale(100%)" class="wiki-home cap" href="/"><svg aria-hidden="true" viewBox="0 0 16 16" width="1rem" height="1rem" fill="currentColor"><path fill-rule="evenodd" d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"></path></svg>所有项目</a><a class="title" href="/Engineering/python/index.html"><div class="main" ff="title">python</div><div class="sub normal cap">about python</div><div class="sub hover cap" style="opacity:0"> @AleryXiao</div></a></div></widget>
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/Engineering/python/" placeholder="在 /Engineering/python/ 中搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+
+
+<widget class="widget-wrapper toc multi" id="data-toc"><div class="widget-header cap dis-select"><span class="name">Set Environment</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/index.html#start"><span class="toc-text">Index</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/Vscode%E9%85%8D%E7%BD%AE.html"><span class="toc-text">Vscode配置</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/PipenV+Pyinstaller.html"><span class="toc-text">PipenV+Pyinstaller</span></a></div><div class="doc-tree active"><a class="doc-tree-link active" href="/Engineering/python/Xpath.html"><span class="toc-text">Xpath</span></a><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Xpath%E7%9A%84%E6%A6%82%E8%A7%88"><span class="toc-text">1. Xpath的概览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-XPath%E5%B8%B8%E7%94%A8%E8%A7%84%E5%88%99"><span class="toc-text">2. XPath常用规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-text">3. 准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AE%9E%E4%BE%8B%E5%BC%95%E7%94%A8"><span class="toc-text">4. 实例引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%89%80%E6%9C%89%E8%8A%82%E7%82%B9"><span class="toc-text">5. 所有节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%AD%90%E8%8A%82%E7%82%B9"><span class="toc-text">6. 子节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%88%B6%E8%8A%82%E7%82%B9"><span class="toc-text">7. 父节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%B1%9E%E6%80%A7%E5%8C%B9%E9%85%8D"><span class="toc-text">8. 属性匹配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E6%96%87%E6%9C%AC%E8%8E%B7%E5%8F%96"><span class="toc-text">9. 文本获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E5%B1%9E%E6%80%A7%E8%8E%B7%E5%8F%96"><span class="toc-text">10.  属性获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E5%B1%9E%E6%80%A7%E5%A4%9A%E5%80%BC%E5%8C%B9%E9%85%8D"><span class="toc-text">11. 属性多值匹配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E5%A4%9A%E5%B1%9E%E6%80%A7%E5%8C%B9%E9%85%8D"><span class="toc-text">12. 多属性匹配</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E6%8C%89%E5%BA%8F%E9%80%89%E6%8B%A9"><span class="toc-text">13. 按序选择</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E8%8A%82%E7%82%B9%E8%BD%B4%E9%80%89%E6%8B%A9"><span class="toc-text">14. 节点轴选择</span></a></li></ol></div></div><div class="widget-header cap dis-select"><span class="name">Std Grammar</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/f-string.html"><span class="toc-text">f-string</span></a></div></div><div class="widget-header cap dis-select"><span class="name">Ocr</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/CUDA%20&%20pip.html"><span class="toc-text">CUDA & pip</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/EasyOCR.html"><span class="toc-text">EasyOCR</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/%E8%85%BE%E8%AE%AF%E4%BA%91OCR.html"><span class="toc-text">腾讯云OCR</span></a></div></div><div class="widget-header cap dis-select"><span class="name">库使用</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/Matplotlib.html"><span class="toc-text">matplotlib</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/Tkinter.html"><span class="toc-text">Tkinter</span></a></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+  
+  
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" id="home" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" id="menu" href="/wiki/">项目</a><span class="sep"></span><a class="cap breadcrumb" id="proj" href="/Engineering/python/index.html">python</a></div><div id="post-meta">更新于&nbsp;<time datetime="2023-01-03T04:30:52.650Z">2023-01-03</time></div></div>
+
+  <article class='md-text content wiki'>
+  <h1 class="article-title"><span>Xpath</span></h1>
+  <p>Reference:  <a target="_blank" rel="noopener" href="https://blog.csdn.net/wangzhuanjia/article/details/122739797?ops_request_misc=&request_id=&biz_id=102&utm_term=xpath&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-122739797.142%5Ev63%5Econtrol,201%5Ev3%5Econtrol_2,213%5Ev2%5Et3_control2&spm=1018.2226.3001.4187">Xpath的使用(详细教学)</a></p>
+<hr>
+<h2 id="1-Xpath的概览"><a href="#1-Xpath的概览" class="headerlink" title="1. Xpath的概览"></a>1. Xpath的概览</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">XPath的选择功能十分强大，他提供了非常简洁明了的路径选择表达式。另外，它还提供了100多个内建函数，</span><br><span class="line">用于字符串，数值，时间的匹配以及节点，序列的处理。几乎所有我们想要定位的节点。都可以用XPath选择。</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-XPath常用规则"><a href="#2-XPath常用规则" class="headerlink" title="2. XPath常用规则"></a>2. XPath常用规则</h2><table>
+<thead>
+<tr>
+<th>表达式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>nodename</td>
+<td>选取此节点的所有子节点</td>
+</tr>
+<tr>
+<td>&#x2F;</td>
+<td>从当前节点选取直接子节点</td>
+</tr>
+<tr>
+<td>&#x2F;&#x2F;</td>
+<td>从当前节点选取子孙节点</td>
+</tr>
+<tr>
+<td>.</td>
+<td>选取当前节点</td>
+</tr>
+<tr>
+<td>. .</td>
+<td>选取当前节点的父节点</td>
+</tr>
+<tr>
+<td>@</td>
+<td>选取属性</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">这里列出了XPath的一个常用匹配规则，如下：</span><br><span class="line">//title[@lang=&#x27;eng&#x27;]</span><br><span class="line">他代表选择所有名称为title，同时属性lang的值为eng的节点。</span><br><span class="line">后面会通过python的lxml库，利用XPath对HTML进行解析</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-准备工作"><a href="#3-准备工作" class="headerlink" title="3. 准备工作"></a>3. 准备工作</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">使用lxml库之前，首先要确保其已经安装好。</span><br><span class="line">可以用使用pip3来安装</span><br><span class="line">pip3 install lxml</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-实例引用"><a href="#4-实例引用" class="headerlink" title="4. 实例引用"></a>4. 实例引用</h2><p>下面通过实例感受一下使用Xpath对网页进行解析的过程，相关代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line">text = &#x27;&#x27;&#x27;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">         &lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link1.html&quot;&gt;first item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link2.html&quot;&gt;second item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-inactive&quot;&gt;&lt;a href=&quot;link3.html&quot;&gt;third item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link4.html&quot;&gt;fourth item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link5.html&quot;&gt;fifth item&lt;/a&gt;</span><br><span class="line">     &lt;/ul&gt;</span><br><span class="line"> &lt;/div&gt;</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">html = etree.HTML(text)</span><br><span class="line">result = etree.tostring(html)</span><br><span class="line">print(result.decode(&#x27;utf-8&#x27;))</span><br></pre></td></tr></table></figure>
+
+<p>这里首先导入lxml库的etree模块，然后声明了一段HTML文本，接着调用HTML类进行初始化，这样就构造了一个XPath解析对象，此处需要注意一点，<strong>HTML文本中的最后一个li节点是没有闭合的，而etree模块可以自动修正HTML文本。</strong><br>之后调用tostring方法即可输出修正后的HTML代码，但是结果是bytes类。于是利用decode方法将其转换成str类型，结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;html&gt;&lt;body&gt;&lt;div&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">         &lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link1.html&quot;&gt;first item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link2.html&quot;&gt;second item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-inactive&quot;&gt;&lt;a href=&quot;link3.html&quot;&gt;third item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link4.html&quot;&gt;fourth item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link5.html&quot;&gt;fifth item&lt;/a&gt;</span><br><span class="line">     &lt;/li&gt;&lt;/ul&gt;</span><br><span class="line"> &lt;/div&gt;</span><br><span class="line">&lt;/body&gt;&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，经过处理之后li节点标签得以补全，并且自动添加了body、html节点。<br>另外，也可以不声明，<strong>直接读取文本进行解析</strong>，示例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(&#x27;./test.html&#x27;, etree.HTMLParser())</span><br><span class="line">result = etree.tostring(html)</span><br><span class="line">print(result.decode(&#x27;utf-8&#x27;))</span><br></pre></td></tr></table></figure>
+
+<p>期中test.html的内容就是上面列子中的HTML代码，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">         &lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link1.html&quot;&gt;first item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link2.html&quot;&gt;second item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-inactive&quot;&gt;&lt;a href=&quot;link3.html&quot;&gt;third item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link4.html&quot;&gt;fourth item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link5.html&quot;&gt;fifth item&lt;/a&gt;</span><br><span class="line">     &lt;/ul&gt;</span><br><span class="line"> &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这次输出的结果略有不同，多了一个DOCTYPE声明，不过对解析无任何影响，结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/REC-html40/loose.dtd&quot;&gt;</span><br><span class="line">&lt;html&gt;&lt;body&gt;&lt;div&gt;&amp;#13;</span><br><span class="line">    &lt;ul&gt;&amp;#13;</span><br><span class="line">         &lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link1.html&quot;&gt;first item&lt;/a&gt;&lt;/li&gt;&amp;#13;</span><br><span class="line">         &lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link2.html&quot;&gt;second item&lt;/a&gt;&lt;/li&gt;&amp;#13;</span><br><span class="line">         &lt;li class=&quot;item-inactive&quot;&gt;&lt;a href=&quot;link3.html&quot;&gt;third item&lt;/a&gt;&lt;/li&gt;&amp;#13;</span><br><span class="line">         &lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link4.html&quot;&gt;fourth item&lt;/a&gt;&lt;/li&gt;&amp;#13;</span><br><span class="line">         &lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link5.html&quot;&gt;fifth item&lt;/a&gt;&amp;#13;</span><br><span class="line">     &lt;/li&gt;&lt;/ul&gt;&amp;#13;</span><br><span class="line"> &lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-所有节点"><a href="#5-所有节点" class="headerlink" title="5. 所有节点"></a>5. 所有节点</h2><p>我们一般会用以&#x2F;&#x2F;开头的XPath规则，来选取所有符合要求的节点。这里还是以第一个实例中的HTML文本为例，选取其中所有节点，实现代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(&#x27;./test.html&#x27;, etree.HTMLParser())</span><br><span class="line">result = html.xpath(&#x27;//*&#x27;)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&lt;Element html at 0x1a5aa580b48&gt;, &lt;Element body at 0x1a5aa580c48&gt;, &lt;Element div at 0x1a5aa580c88&gt;, &lt;Element ul at 0x1a5aa580cc8&gt;, &lt;Element li at 0x1a5aa580d08&gt;, &lt;Element a at 0x1a5aa580d88&gt;, &lt;Element li at 0x1a5aa580dc8&gt;, &lt;Element a at 0x1a5aa580e08&gt;, &lt;Element li at 0x1a5aa580e48&gt;, &lt;Element a at 0x1a5aa580d48&gt;, &lt;Element li at 0x1a5aa580e88&gt;, &lt;Element a at 0x1a5aa580ec8&gt;, &lt;Element li at 0x1a5aa580f08&gt;, &lt;Element a at 0x1a5aa580f48&gt;]</span><br></pre></td></tr></table></figure>
+
+<p>这里使用*代表匹配所有节点，也就是获取整个HTML文本中的所有节点。从运行结果可以看到返回形式是一个列表，其中每个元素是Element类型，类型后面跟这节点的名称，如html、body、div等所有节点都包含在列表中。<br>当然，此处也可以匹配指定节点名称。列如想获取li节点，示例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(&#x27;./test.html&#x27;, etree.HTMLParser())</span><br><span class="line">result = html.xpath(&#x27;//li&#x27;)</span><br><span class="line">print(result)</span><br><span class="line">print(result[0])</span><br></pre></td></tr></table></figure>
+
+<p>这里选取所有li节点，可以使用&#x2F;&#x2F;，然后直接加上节点名称，调用时使用xpath方法即可。<br>运行结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&lt;Element li at 0x1c66d060c48&gt;, &lt;Element li at 0x1c66d060c88&gt;, &lt;Element li at 0x1c66d060cc8&gt;, &lt;Element li at 0x1c66d060d08&gt;, &lt;Element li at 0x1c66d060d48&gt;]</span><br><span class="line">&lt;Element li at 0x1c66d060c48&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，提取结果也是一个列表，其中每个元素都是Element类型。要是想取出一个对象可以直接用中括号加索引获取，如[0]。</p>
+<h2 id="6-子节点"><a href="#6-子节点" class="headerlink" title="6. 子节点"></a>6. 子节点</h2><p>通过&#x2F;或&#x2F;&#x2F;即可查找元素的子节点或子孙节点。假如现在想选择li节点的所有直接子节点a，则可以这样实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(&#x27;./test.html&#x27;, etree.HTMLParser())</span><br><span class="line">result = html.xpath(&#x27;//li/a&#x27;)</span><br><span class="line">print(result)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里通过追加&#x2F;a的方式，选择了所有li节点的所有直接子节点a。其中&#x2F;&#x2F;li用于选中所有li节点，&#x2F;a用于选中li节点的所有直接子节点啊。<br>运行结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&lt;Element a at 0x2592a090c48&gt;, &lt;Element a at 0x2592a090c88&gt;, &lt;Element a at 0x2592a090cc8&gt;, &lt;Element a at 0x2592a090d08&gt;, &lt;Element a at 0x2592a090d48&gt;]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>上面的&#x2F;用于选取节点的直接子节点，如果要获取节点的所有子孙节点，可以使用&#x2F;&#x2F;。例如要获取ul节点下面的所有子孙节点a，可以这样实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(&#x27;./test.html&#x27;, etree.HTMLParser())</span><br><span class="line">result = html.xpath(&#x27;//ul//a&#x27;)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果是相同的。<br>但是如果这里用&#x2F;&#x2F;ul&#x2F;a，就无法获取结果了，因为&#x2F;用于获取直接的子节点，而ul节点下没有直接的a子节点，只有li节点，所以无法获取任何匹配结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(&#x27;./test.html&#x27;, etree.HTMLParser())</span><br><span class="line">result = html.xpath(&#x27;//ul/a&#x27;)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[]</span><br></pre></td></tr></table></figure>
+
+<p><strong>因此这里要注意&#x2F;和&#x2F;&#x2F;的区别，前者用于获取直接子节点，后者用于获取子孙节点</strong></p>
+<h2 id="7-父节点"><a href="#7-父节点" class="headerlink" title="7. 父节点"></a>7. 父节点</h2><p>如何查找父节点呢?<br>示例如下：<br>首先选中href属性为link4.html的a节点，然后获取其父节点，在获取父节点的class属性，相关代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(&#x27;./test.html&#x27;, etree.HTMLParser())</span><br><span class="line">result = html.xpath(&#x27;//a[@href=&quot;link4.html&quot;]/../@class&#x27;)</span><br><span class="line">print(result)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&#x27;item-1&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>可以通过观察这正是我们获取a标签属性为href为link4.html的父节点li节点的class属性<br>我们也可以<strong>用parent::获取父节点</strong>,代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(&#x27;./test.html&#x27;, etree.HTMLParser())</span><br><span class="line">result = html.xpath(&#x27;//a[@href=&quot;link4.html&quot;]/parent::*/@class&#x27;)</span><br><span class="line">print(result)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果相同都是[‘item-1’]</p>
+<h2 id="8-属性匹配"><a href="#8-属性匹配" class="headerlink" title="8. 属性匹配"></a>8. 属性匹配</h2><p>在选取节点的时候，还可以使用@符号实现属性过滤。例如，要选取class属性为item-0的li接地但，可以这样实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(&#x27;./test.html&#x27;, etree.HTMLParser())</span><br><span class="line">result = html.xpath(&#x27;//li[@class=&quot;item-0&quot;]&#x27;)</span><br><span class="line">print(result)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里通过加入[@class&#x3D;‘item-0’]，限制了节点的class属性为item-0.HTML文本中符合这个条件的li节点有两个，所以结果因该返回两个元素。<br>结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&lt;Element li at 0x23e52010c48&gt;, &lt;Element li at 0x23e52010c88&gt;]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>可见，匹配结果因该返回两个元素，后面在验证</p>
+<h2 id="9-文本获取"><a href="#9-文本获取" class="headerlink" title="9. 文本获取"></a>9. 文本获取</h2><p>用Xpath中的text方法可以获取节点中的文本，接下来尝试获取前面li节点中的文本，相关代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(&#x27;./test.html&#x27;, etree.HTMLParser())</span><br><span class="line">result = html.xpath(&#x27;//li[@class=&quot;item-0&quot;]/text()&#x27;)</span><br><span class="line">print(result)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>运行结果为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&#x27;\r\n     &#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>奇怪的是，我们没有获取任何文本，只获取了一个换行符，这是为什么呢？因为xpath中text方法的前面是&#x2F;，而&#x2F;的含义就是直接选取子节点，很明显li的直接子节点都是a节点，文本都是在a节点内部的，所以这里匹配到的结果就是被修正的li节点内部的换行符，因为自动修正的li节点的尾标签换行了。<br>及选中的是这两个节点：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link1.html&quot;&gt;first item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link5.html&quot;&gt;fifth item&lt;/a&gt;&amp;#13;</span><br><span class="line">  &lt;/li&gt;</span><br></pre></td></tr></table></figure>
+
+<p>其中一个节点因为自动修正，li节点的尾标签在添加的时候换行了，所以提取文本得到的唯一结果就是li节点的尾标签和a节点的尾标签之前的换行符。</p>
+<p>因此，如果想获取li节点内部的文本，就有两种方法，一种是先选取a节点在获取文本，另一种是使用&#x2F;&#x2F;。接下来我们看两种的区别。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">from lxml import etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(&#x27;./test.html&#x27;, etree.HTMLParser())</span><br><span class="line">result = html.xpath(&#x27;//li[@class=&quot;item-0&quot;]/a/text()&#x27;)</span><br><span class="line">print(result)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&#x27;first item&#x27;, &#x27;fifth item&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，这里返回两个值，内容都是class属性为item-0的li节点的文本，这也印证了前面属性匹配的结果是正确的。<br>这种方式下，我们是逐层选取的，先选取li节点，然后利用&#x2F;选取其直接子节点a，在选取a的文本，得到的两个结果恰好符合我们的预期。</p>
+<p>再看一下啊使用&#x2F;&#x2F;能够获取什么结果</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(&#x27;./test.html&#x27;, etree.HTMLParser())</span><br><span class="line">result = html.xpath(&#x27;//li[@class=&quot;item-0&quot;]//text()&#x27;)</span><br><span class="line">print(result)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>运行结果如如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&#x27;first item&#x27;, &#x27;fifth item&#x27;, &#x27;\r\n     &#x27;]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>不出所料，这里的返回结果是三个。可想而知这里选取的是所有子孙节点的文本，其中前两个是li的子节点a内部的文本，另外一个是最后一个li节点内部的文本，及换行符</p>
+<p><strong>如果需要选取子孙节点内部的所有文本，直接使用&#x2F;&#x2F;text，这样可以获得全部信息，但是也会有一些换行符等特殊字符，如果获取特定子孙节点的所有文本，则先逐层选择在用text方法</strong></p>
+<h2 id="10-属性获取"><a href="#10-属性获取" class="headerlink" title="10.  属性获取"></a>10.  属性获取</h2><p>获取li节点下面的所有a节点的href</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line"></span><br><span class="line">html = etree.parse(&#x27;./test.html&#x27;, etree.HTMLParser())</span><br><span class="line">result = html.xpath(&#x27;//li/a/@href&#x27;)</span><br><span class="line">print(result)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>这里通过@href获取节点的href属性，注意此处和属性匹配的方法不同，属性区别是用中括号加属性名和值来限定某个属性，如[@href&#x3D;“link1.html”],此处的@href是指获取节点的某个属性，二者需要做好区分。</strong><br>运行结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&#x27;link1.html&#x27;, &#x27;link2.html&#x27;, &#x27;link3.html&#x27;, &#x27;link4.html&#x27;, &#x27;link5.html&#x27;]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>可以看到，我们成功获取了所有li节点下a节点的href属性，并以列表形式返回了他们。</p>
+<h2 id="11-属性多值匹配"><a href="#11-属性多值匹配" class="headerlink" title="11. 属性多值匹配"></a>11. 属性多值匹配</h2><p>有时候，某些节点的属性可能有多个值，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line">text = &#x27;&#x27;&#x27;</span><br><span class="line">&lt;li class=&quot;li li-first&quot;&gt;&lt;a href=&quot;link.html&quot;&gt;first item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">html = etree.HTML(text)</span><br><span class="line">result = html.xpath(&#x27;//li[@class=&quot;li&quot;]/a/text()&#x27;)</span><br><span class="line">print(result)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里HTML文本中li节点的class属性就有两个值：li和 li-first。此时如果还用之前的属性匹配获取节点，就无法获取到了<br>运行结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[]</span><br></pre></td></tr></table></figure>
+
+<p><strong>这种情况需要用到contains方法(和jquery中的contains方法一致)</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line">text = &#x27;&#x27;&#x27;</span><br><span class="line">&lt;li class=&quot;li li-first&quot;&gt;&lt;a href=&quot;link.html&quot;&gt;first item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">html = etree.HTML(text)</span><br><span class="line">result = html.xpath(&#x27;//li[contains(@class,&quot;li&quot;)]/a/text()&#x27;)</span><br><span class="line">print(result)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>上面使用了contains方法，给其第一个参数传入属性名称，第二个参数传入属性值，只要传入的属性包含传入的属性值，就可以完成匹配了。<br>此时运行结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&#x27;first item&#x27;]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>contains方法在某个节点的某个属性有多个值时用到</strong></p>
+<h2 id="12-多属性匹配"><a href="#12-多属性匹配" class="headerlink" title="12. 多属性匹配"></a>12. 多属性匹配</h2><p>我们还可能遇到一种情况，就是更具多个属性确定一个节点，这是需要同事匹配多个属性。运算符and用于连接多个属性，实例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line">text = &#x27;&#x27;&#x27;</span><br><span class="line">&lt;li class=&quot;li li-first&quot; name=&quot;item&quot;&gt;&lt;a href=&quot;link.html&quot;&gt;first item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">html = etree.HTML(text)</span><br><span class="line">result = html.xpath(&#x27;//li[contains(@class, &quot;li&quot;) and @name=&quot;item&quot;]/a/text()&#x27;)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+
+<p>这里的li节点又增加了一个name属性，因此要确定li节点，需要同时考察class和name属性，一个条件是class属性里面包含了li<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E5%AD%97%E7%AC%A6%E4%B8%B2&spm=1001.2101.3001.7020">字符串</a>，另一个条件是name属性为item字符串，这二者同时得到满足，才是li节点。class和name属性需要用到and运算符相连。<br>结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&#x27;first item&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p>以下列举了其他运算符号</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+<th>实例</th>
+<th>返回值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>or</td>
+<td>或</td>
+<td>age&#x3D;19 or age&#x3D;20</td>
+<td>如果age是19则返回True。如果age是21则返回false 两个条件满足一个即可</td>
+</tr>
+<tr>
+<td>and</td>
+<td>与</td>
+<td>age&gt;19 and age&lt;20</td>
+<td>如果age是20则返回True。如果age是18则返回false 两个条件同时满足即可</td>
+</tr>
+<tr>
+<td>mod</td>
+<td>计算除法的余数</td>
+<td>5 mod 2</td>
+<td>1</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>计算两个节点集</td>
+<td>&#x2F;&#x2F;book</td>
+</tr>
+<tr>
+<td>**加减乘除 + - * div(表示除法)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>大于小于等比较运算符 不举例说明**</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="13-按序选择"><a href="#13-按序选择" class="headerlink" title="13. 按序选择"></a>13. 按序选择</h2><p>在选择节点时，某些属性可能同时匹配了多个节点，但我们只想要其中一个，如第二个或者最后一个<br>可以使用往中括号中传入索引的方法获取特定次序的节点如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line"></span><br><span class="line">text = &#x27;&#x27;&#x27;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">         &lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link1.html&quot;&gt;first item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link2.html&quot;&gt;second item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-inactive&quot;&gt;&lt;a href=&quot;link3.html&quot;&gt;third item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link4.html&quot;&gt;fourth item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link5.html&quot;&gt;fifth item&lt;/a&gt;</span><br><span class="line">     &lt;/ul&gt;</span><br><span class="line"> &lt;/div&gt;</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">html = etree.HTML(text)</span><br><span class="line">result = html.xpath(&#x27;//li[1]/a/text()&#x27;)</span><br><span class="line">print(result)</span><br><span class="line">result = html.xpath(&#x27;//li[last()]/a/text()&#x27;)</span><br><span class="line">print(result)</span><br><span class="line">result = html.xpath(&#x27;//li[position()&lt;3]/a/text()&#x27;)</span><br><span class="line">print(result)</span><br><span class="line">result = html.xpath(&#x27;//li[last()-2]/a/text()&#x27;)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+
+<p>第一个print 往中括号中传入索引[1]，<strong>即可获取第一个数据，注意序号以1开头，而不是0</strong><br>第二个last()方法表示最后一个<br>第三个position()❤️ 选取了位置小于3的li节点也就是第一个和第二个节点<br>第四次last()-2则表示倒数第三个<br>结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&#x27;first item&#x27;]</span><br><span class="line">[&#x27;fifth item&#x27;]</span><br><span class="line">[&#x27;first item&#x27;, &#x27;second item&#x27;]</span><br><span class="line">[&#x27;third item&#x27;]</span><br></pre></td></tr></table></figure>
+
+<p><strong>在这个实例中我们使用了last、position等方法。xpath提供了100多个方法，包括存取、数值、字符串、逻辑、节点、序列等处理功能</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">节点集函数 </span><br><span class="line"></span><br><span class="line"> last() 返回当前上下文中的最后一个节点的位置号数。 </span><br><span class="line"> position() 返回当前节点的位置的数字,位于第多少个。</span><br><span class="line"> count(node-set) 返回节点集node-set中的节点数。</span><br><span class="line"> id(mark) 根据在DTD中声明为ID类型的标识符选择元素,返回一个节点集。</span><br><span class="line"> name() 返回节点名称。</span><br><span class="line"> local-name() 返回不带名称空间的节点名称。</span><br><span class="line"> namespace-uri() 返回名称空间。</span><br><span class="line"></span><br><span class="line">字符串函数 </span><br><span class="line"></span><br><span class="line"> string(object) 把节点集、数字、布尔值等转化成字串并返回。 </span><br><span class="line"> format-number(num) 把数字转化成字串并返回。 </span><br><span class="line"> concat(string1,string2...) 合并多个字串并返回。</span><br><span class="line"> starts-with(string1,string2) 如果字串string1开头带string2的所有字符则返回true,否则返回false。</span><br><span class="line"> contains(string1,string2) 如果字串string1包含string2的所有字符则返回true,否则返回false。</span><br><span class="line"> substring(string,number1,number2) 取string中从位置number1开始,number2长的子串,number2可省略。</span><br><span class="line"> substring-before(string1,string2) 取string1在string2第一次出现位置之前的子串。</span><br><span class="line"> substring-after(string,string) 取string1在string2第一次出现位置之后的子串。</span><br><span class="line"> string-length(string) 返回string的长度数字。</span><br><span class="line"> normalize-space(string) 清除string头尾的空白字符并且把连续的空白字符替换为一个再返回。</span><br><span class="line"> translate(string1,string2,string3) 假如string1中的字符在string2中有出现,那么替换为string3对应string2的同一位置的字符,假如string3这个位置取不到字符则删除string1的该字符。</span><br><span class="line"></span><br><span class="line">布尔函数 </span><br><span class="line"> </span><br><span class="line">  boolean(object) 非0和NaN的数字/非空节点/长度大于0的字串返回true,非基本类型的转换有时无法估计。</span><br><span class="line">  not(boolean)   对布尔值取反。 </span><br><span class="line">  true() 返回true。</span><br><span class="line">  false() 返回false。</span><br><span class="line">  lang(string) 如果上下文节点的lang属性和string相同则返回true。</span><br><span class="line"></span><br><span class="line">数字函数</span><br><span class="line"></span><br><span class="line"> number(object) 使对象转化成数字,布尔值true为1,false为0;节点集首先转换成字符串,字符串转换成数字或者NaN。</span><br><span class="line"> sum(node-set) 对节点集node-set中的所有节点应用number()函数后返回和。 </span><br><span class="line"> floor(number) 返回不大于数字number的最大整数。</span><br><span class="line"> ceiling(number) 返回不小于数字number的最小整数。</span><br><span class="line"> round(number) 返回和数字number的四舍五入结果。</span><br></pre></td></tr></table></figure>
+
+<h2 id="14-节点轴选择"><a href="#14-节点轴选择" class="headerlink" title="14. 节点轴选择"></a>14. 节点轴选择</h2><p>XPath提供了很多节点轴的选择方法，包括获取子元素，兄弟元素，父元素，祖先元素等，实例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">from lxml import etree</span><br><span class="line"></span><br><span class="line">text = &#x27;&#x27;&#x27;</span><br><span class="line">&lt;div&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">         &lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link1.html&quot;&gt;&lt;span&gt;first item&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link2.html&quot;&gt;second item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-inactive&quot;&gt;&lt;a href=&quot;link3.html&quot;&gt;third item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-1&quot;&gt;&lt;a href=&quot;link4.html&quot;&gt;fourth item&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         &lt;li class=&quot;item-0&quot;&gt;&lt;a href=&quot;link5.html&quot;&gt;fifth item&lt;/a&gt;</span><br><span class="line">     &lt;/ul&gt;</span><br><span class="line"> &lt;/div&gt;</span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line">html = etree.HTML(text)</span><br><span class="line">result = html.xpath(&#x27;//li[1]/ancestor::*&#x27;)</span><br><span class="line">print(result)</span><br><span class="line">result = html.xpath(&#x27;//li[1]/ancestor::div&#x27;)</span><br><span class="line">print(result)</span><br><span class="line">result = html.xpath(&#x27;//li[1]/attribute::*&#x27;)</span><br><span class="line">print(result)</span><br><span class="line">result = html.xpath(&#x27;//li[1]/child::a[@href=&quot;link1.html&quot;]&#x27;)</span><br><span class="line">print(result)</span><br><span class="line">result = html.xpath(&#x27;//li[1]/descendant::span&#x27;)</span><br><span class="line">print(result)</span><br><span class="line">result = html.xpath(&#x27;//li[1]/following::*[2]&#x27;)</span><br><span class="line">print(result)</span><br><span class="line">result = html.xpath(&#x27;//li[1]/following-sibling::*&#x27;)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[&lt;Element html at 0x2458d4d6bc8&gt;, &lt;Element body at 0x2458d4d6b48&gt;, &lt;Element div at 0x2458d4d6b08&gt;, &lt;Element ul at 0x2458d4d6c08&gt;]</span><br><span class="line">[&lt;Element div at 0x2458d4d6b08&gt;]</span><br><span class="line">[&#x27;item-0&#x27;]</span><br><span class="line">[&lt;Element a at 0x2458d4d6c08&gt;]</span><br><span class="line">[&lt;Element span at 0x2458d4d6b08&gt;]</span><br><span class="line">[&lt;Element a at 0x2458d4d6c08&gt;]</span><br><span class="line">[&lt;Element li at 0x2458d4d6b48&gt;, &lt;Element li at 0x2458d4d6c48&gt;, &lt;Element li at 0x2458d4d6c88&gt;, &lt;Element li at 0x2458d4d6cc8&gt;]</span><br></pre></td></tr></table></figure>
+
+<p>首先介绍关于xpath轴的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ancestor选取当前节点的所有先辈（父、祖父等）。</span><br><span class="line">ancestor-or-self选取当前节点的所有先辈（父、祖父等）以及当前节点本身。</span><br><span class="line">attribute选取当前节点的所有属性。</span><br><span class="line">child选取当前节点的所有子元素。</span><br><span class="line">descendant选取当前节点的所有后代元素（子、孙等）。</span><br><span class="line">descendant-or-self选取当前节点的所有后代元素（子、孙等）以及当前节点本身。</span><br><span class="line">following选取文档中当前节点的结束标签之后的所有节点。</span><br><span class="line">following-sibling选取当前节点之后的所有兄弟节点</span><br><span class="line">namespace选取当前节点的所有命名空间节点。</span><br><span class="line">parent选取当前节点的父节点。</span><br><span class="line">preceding选取文档中当前节点的开始标签之前的所有节点。</span><br><span class="line">preceding-sibling选取当前节点之前的所有同级节点。</span><br><span class="line">self选取当前节点。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+  
+<div class="article-footer reveal fs14"><section id="references"><div class="header"><span>参考资料</span></div><div class="body"><ul><li class="post-title"><a href="http://t.csdn.cn/Jtqax" target="_blank" rel="external nofollow noopener noreferrer">Xpath的使用(详细教学)_瓜皮三三的博客</a></li></ul></div></section></div>
+
+  </article>
+  
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">回顾上一篇</div><a href="/Engineering/python/PipenV+Pyinstaller.html">PipenV+Pyinstaller</a></div><div class="item" id="next"><div class="note">接下来阅读</div><a href="/Engineering/python/f-string.html">f-string</a></div></section></div>
+
+  
+
+  <div class='related-wrap md-text reveal' id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>评论区仅供交流~</p>
+
+    </section>
+    <section class='body cmt-body giscus'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="giscus" data-repo="aleryxiao/aleryxiao.github.io" data-repo-id="R_kgDOIdw0jw" data-category="Announcements" data-category-id="DIC_kwDOIdw0j84CTXeH" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous"></div>
+
+    </section>
+  </div>
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客</span><a href="/">近期</a><a href="/categories">分类</a><a href="/tags">标签</a><a href="/">归档</a></div><div class="sitemap-group"><span class="fs14">整理</span><a href="/wiki">文件夹</a></div><div class="sitemap-group"><span class="fs14">社交</span><a href="/dynamic">动态</a><a href="/friend">友链</a><a href="/guestbook">留言板</a></div><div class="sitemap-group"><span class="fs14">更多</span><a href="/about">关于</a><a target="_blank" rel="noopener" href="https://github.com/aleryxiao">GitHub</a></div></div><div class="text"><p>本站由 <a target="_blank" rel="noopener" href="https://space.bilibili.com/19610138">@AleryXiao</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.18.5';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.18.5';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadJS() {
+    const els = document.querySelectorAll("#comments #giscus");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://giscus.app/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    loadJS();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

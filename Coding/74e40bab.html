@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.18.5">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>汇编语言 速效救心丸 - 極楽浄土</title>
+
+  
+    <meta name="description" content="帮助快速上手汇编语言编程的小教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="汇编语言 速效救心丸">
+<meta property="og:url" content="https://aleryxiao.github.io/Coding/74e40bab.html">
+<meta property="og:site_name" content="極楽浄土">
+<meta property="og:description" content="帮助快速上手汇编语言编程的小教程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200512110737331.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDk5NDU1Mg==,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200512122803832.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDk5NDU1Mg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://aleryxiao.github.io/assets/Pasted%20image%2020221206112205.png">
+<meta property="article:published_time" content="2022-12-07T07:03:08.000Z">
+<meta property="article:modified_time" content="2023-01-02T14:07:00.666Z">
+<meta property="article:author" content="AleryXiao">
+<meta property="article:tag" content="ASM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200512110737331.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDk5NDU1Mg==,size_16,color_FFFFFF,t_70#pic_center">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="極楽浄土" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="/site_assets/favicon.jpg">
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/site_assets/head.jpg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">極楽浄土</div><div class="sub normal cap">フロトの理发店</div><div class="sub hover cap" style="opacity:0"> @AleryXiao</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item active" href="/">琐屑</a><a class="nav-item" href="/wiki/">合集</a><a class="nav-item" href="/dynamic/">动态</a><a class="nav-item" href="/about/">关于</a></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">汇编语言 速效救心丸</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%9AAX%EF%BC%8CBX%EF%BC%8CCX%EF%BC%8CDX"><span class="toc-text">通用寄存器：AX，BX，CX，DX</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#AX%EF%BC%9AAccumlator-%E7%B4%AF%E5%8A%A0%E5%99%A8"><span class="toc-text">AX：Accumlator 累加器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#BX%EF%BC%9ABase-%E5%9F%BA%E5%9C%B0%E5%9D%80%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-text">BX：Base 基地址寄存器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CX%EF%BC%9ACount-%E8%AE%A1%E6%95%B0%E5%99%A8"><span class="toc-text">CX：Count 计数器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#DX%EF%BC%9AData-%E6%95%B0%E6%8D%AE%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-text">DX：Data 数据寄存器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E5%8F%98%E5%9D%80%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%9ASP%EF%BC%8CBP%EF%BC%8CSI%EF%BC%8CDI"><span class="toc-text">指针变址寄存器：SP，BP，SI，DI</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#SP%EF%BC%9AStack-Pointer"><span class="toc-text">SP：Stack Pointer</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#BP%EF%BC%9ABase-Pointer"><span class="toc-text">BP：Base Pointer</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SI%EF%BC%9ASource-Index"><span class="toc-text">SI：Source Index</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#DI%EF%BC%9ADestination-Index"><span class="toc-text">DI：Destination Index</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AE%B5%E5%AF%84%E5%AD%98%E5%99%A8%EF%BC%9ACS%EF%BC%8CDS%EF%BC%8CSS%EF%BC%8CES%EF%BC%8CIP"><span class="toc-text">段寄存器：CS，DS，SS，ES，IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%BF%97%E5%AF%84%E5%AD%98%E5%99%A8-FLAG"><span class="toc-text">标志寄存器 FLAG</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0a-x-y"><span class="toc-text">练习a: x+y</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Label%E5%92%8CJump%EF%BC%9A%E8%B7%B3%E8%BD%AC"><span class="toc-text">1. Label和Jump：跳转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%86%E6%94%AF%E5%92%8C%E5%BE%AA%E7%8E%AF"><span class="toc-text">2. 分支和循环</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%94%AF-CMP-JGE-x2F-%E2%80%A6"><span class="toc-text">分支 CMP-JGE&#x2F;…</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0b-%E6%B1%82%E6%9C%80%E5%A4%A7%E5%80%BC"><span class="toc-text">练习b: 求最大值</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF-LOOP"><span class="toc-text">循环  LOOP</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0c-%E6%95%B0%E7%BB%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">练习c: 数组初始化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%A0%86%E6%A0%88%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">3. 堆栈的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E7%9B%B4%E8%A7%82%E7%9A%84%EF%BC%88%E5%A0%86%E6%A0%88%E6%AE%B5%E4%B8%AD%E5%81%9A%E5%AE%9A%E4%B9%89%EF%BC%89"><span class="toc-text">比较直观的（堆栈段中做定义）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A8%8D%E5%BE%AE%E6%B2%A1%E9%82%A3%E4%B9%88%E7%9B%B4%E8%A7%82%E7%9A%84%EF%BC%88%E7%A8%8B%E5%BA%8F%E6%AE%B5%E4%B8%AD%E5%88%92%E7%A9%BA%E9%97%B4%EF%BC%89"><span class="toc-text">稍微没那么直观的（程序段中划空间）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PUSH%E5%92%8CPOP"><span class="toc-text">PUSH和POP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8SP%E5%92%8CBP%E6%93%8D%E4%BD%9C%E5%A0%86%E6%A0%88"><span class="toc-text">用SP和BP操作堆栈</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-lt-%E5%87%BD%E6%95%B0-gt-%EF%BC%9APROC%E5%92%8CMACRO"><span class="toc-text">4. &lt;函数&gt;：PROC和MACRO</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PROC-amp-CALL%EF%BC%88%E5%AD%90%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84%EF%BC%89"><span class="toc-text">PROC&amp;CALL（子程序结构）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89-PROC-RET-ENDP"><span class="toc-text">定义 PROC-RET-ENDP</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%AD%90%E7%A8%8B%E5%BA%8F%E5%B1%9E%E6%80%A7%E5%92%8C%E8%B0%83%E7%94%A8"><span class="toc-text">子程序属性和调用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%8F%E5%BF%83%E5%A0%86%E6%A0%88%EF%BC%81"><span class="toc-text">小心堆栈！</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Macro%EF%BC%88%E5%AE%8F%E5%AE%9A%E4%B9%89%EF%BC%89"><span class="toc-text">*Macro（宏定义）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-INT-21H%E6%8C%87%E4%BB%A4%EF%BC%9A%E8%BE%93%E5%85%A5-x2F-%E8%BE%93%E5%87%BA"><span class="toc-text">5. INT 21H指令：输入&#x2F;输出</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5"><span class="toc-text">键盘输入</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1%E5%8F%B7%E6%8C%87%E4%BB%A4%EF%BC%9A%E5%8D%95%E4%B8%AA%E5%AD%97%E7%AC%A6%E8%BE%93%E5%85%A5"><span class="toc-text">1号指令：单个字符输入</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10%E5%8F%B7%E6%8C%87%E4%BB%A4%EF%BC%9A%E4%BB%8E%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">10号指令：从键盘输入字符串</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E5%99%A8%E8%BE%93%E5%87%BA"><span class="toc-text">显示器输出</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2%E5%8F%B7%E8%B0%83%E7%94%A8%EF%BC%9A%E5%8D%95%E4%B8%AA%E5%AD%97%E7%AC%A6%E8%BE%93%E5%87%BA"><span class="toc-text">2号调用：单个字符输出</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9%E5%8F%B7%E8%B0%83%E7%94%A8%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BE%93%E5%87%BA"><span class="toc-text">9号调用：字符串输出</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E7%BB%83%E4%B9%A0"><span class="toc-text">综合练习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%83%E4%B9%A0d-%E5%A4%A7%E5%B0%8F%E5%86%99%E8%BD%AC%E6%8D%A2-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-text">练习d. 大小写转换+输入输出</span></a></li></ol></li></ol></div></div></widget>
+
+
+
+
+</div>
+<footer class="footer dis-select"><div class="social-wrap"><a class="social" href="http://wpa.qq.com/msgrd?v=3&uin=2498742177&site=qq&menu=yes" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="\site_assets\qqIcon.png"/></a><a class="social" href="https://space.bilibili.com/19610138" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="\site_assets\bilibiliIcon.png"/></a><a class="social" href="mailto:aleryxiao@163.com" rel="noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="\site_assets\mailIcon.png"/></a></div></footer>
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Coding/">Coding</a></div><div id="post-meta">发布于&nbsp;<time datetime="2022-12-07T07:03:08.000Z">2022-12-07</time></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>汇编语言 速效救心丸</span></h1>
+<p>帮助快速上手汇编语言编程，虽然只限于编程<br>配套Bilibili视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1BM411B7ZB/">上篇</a>；<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1BM411B7ZB/">下篇</a></p>
+<h1 id="VScode配置调试环境"><a href="#VScode配置调试环境" class="headerlink" title="VScode配置调试环境"></a>VScode配置调试环境</h1><ol>
+<li>安装插件TASM&#x2F;MASM</li>
+<li>右键扩展设置，选择Assembler：MASM</li>
+<li>右键调试即可开始调试了！</li>
+</ol>
+<h1 id="Debug-exe"><a href="#Debug-exe" class="headerlink" title="Debug.exe"></a>Debug.exe</h1><blockquote>
+<p>R命令：查看、改变CPU寄存器的内容<br>D命令：查看内存中的内容<br>T命令：执行一条机器指令<br>G命令：从停顿的地方运行到底</p>
+</blockquote>
+<h1 id="第一段代码：Hello-World"><a href="#第一段代码：Hello-World" class="headerlink" title="第一段代码：Hello World"></a>第一段代码：Hello World</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">DSEG SEGMENT</span><br><span class="line">        MESS DB &#x27;Hello, World!&#x27;,0DH,0AH,24H</span><br><span class="line">DSEG ENDS</span><br><span class="line"></span><br><span class="line">SSEG SEGMENT PARA STACK</span><br><span class="line">             DW 256 DUP(?)</span><br><span class="line">SSEG ENDS</span><br><span class="line"></span><br><span class="line">CSEG SEGMENT</span><br><span class="line">              ASSUME CS:CSEG, DS:DSEG</span><br><span class="line">        BEGIN:MOV    AX,DSEG</span><br><span class="line">              MOV    DS,AX</span><br><span class="line">              MOV    DX,OFFSET MESS</span><br><span class="line">              </span><br><span class="line">              MOV    AH,9</span><br><span class="line">              INT    21H</span><br><span class="line">              </span><br><span class="line">              MOV    AH,4CH</span><br><span class="line">              INT    21H</span><br><span class="line">CSEG ENDS</span><br><span class="line">END BEGIN</span><br></pre></td></tr></table></figure>
+
+<h1 id="基础指令"><a href="#基础指令" class="headerlink" title="基础指令"></a>基础指令</h1><p>用以下指令可以写一个基础的程序：</p>
+<ol>
+<li>段定义+Assume</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">XXX SEGMENT(XXX:DATA/STACK/CODE)</span><br><span class="line">XXX ENDS</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ASSUME CS:CSEG, DS:DSEG, SS:SSEG</span><br><span class="line">MOV AX,DSEG</span><br><span class="line">MOV DS,AX</span><br><span class="line">MOV AX,SSEG</span><br><span class="line">MOV SS,AX</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>数据定义</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">(ORG 1000)</span><br><span class="line">(NAME) DB ?/...</span><br><span class="line">(NAME) DB N DUP(?/...)</span><br><span class="line">db:12H/dw:1234H</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>MOV</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MOV AX,Y</span><br><span class="line">MOV Y,AX</span><br><span class="line">MOV AX,BX</span><br></pre></td></tr></table></figure>
+
+
+<ol start="4">
+<li>+-</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ADD AX,X;AX+=X</span><br><span class="line">SUB AX,X;</span><br><span class="line">INC AX;AX++</span><br><span class="line">DEC AX;AX--</span><br><span class="line"></span><br><span class="line">NEG AX ;取负</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="5">
+<li>程序的终止</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MOV AH,4CH</span><br><span class="line">INT 21H</span><br></pre></td></tr></table></figure>
+
+<p>稍后会讲的进阶指令：</p>
+<ol>
+<li>Label和JUMP：跳转</li>
+<li>分支和循环</li>
+<li>堆栈的使用</li>
+<li>&lt;函数&gt;：PROC和MACRO</li>
+<li>INT 21H指令：输入&#x2F;输出</li>
+</ol>
+<h1 id="寄存器的使用"><a href="#寄存器的使用" class="headerlink" title="寄存器的使用"></a>寄存器的使用</h1><p>在汇编语言中，我们不能对内存中的数据进行直接操作，如果要操作，需要把数据先<code>MOV</code>到寄存器中再进行处理。<br>为了写代码的过程更顺滑，最好先简单了解一下这些寄存器的使用，当然，你也可以只了解通用寄存器的使用，别的等用到了再去查询。<br>我会尽可能简单地表述。</p>
+<p>8086 CPU 中有14个16位寄存器 。16位的存储可以用16进制表示，BeLike：<code>123AH</code>（H表示16进制)在查看内存情况的时候，由于数据从高位到低位存储，BeLike：<code>3A 12</code></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://img-blog.csdnimg.cn/20200512110737331.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDk5NDU1Mg==,size_16,color_FFFFFF,t_70#pic_center">  </p>
+<h3 id="通用寄存器：AX，BX，CX，DX"><a href="#通用寄存器：AX，BX，CX，DX" class="headerlink" title="通用寄存器：AX，BX，CX，DX"></a>通用寄存器：AX，BX，CX，DX</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">DSEG ...</span><br><span class="line">X DB 12H</span><br><span class="line">Y DB ?</span><br><span class="line">....</span><br><span class="line"></span><br><span class="line">CSEG...</span><br><span class="line">...</span><br><span class="line">MOV AH,X</span><br><span class="line">MOV Y,AH ;Y--12H</span><br></pre></td></tr></table></figure>
+
+
+<p>可以拆分为两个寄存器使用（AH和AL），不过各自有各自的独特作用，用到再提，这和它们的名字是关联的</p>
+<p>说到底为什么&lt;通用&gt;寄存器会有&lt;独特的作用&gt;？<br>这是因为&#x3D;&#x3D;一些内置的指令依靠<strong>固定</strong>的寄存器传递参数&#x3D;&#x3D;，所以这些寄存器也有了独特的作用</p>
+<p>一般来说随便用就可以，反正里面的东西不久存，只是用来做&#x3D;&#x3D;中转&#x3D;&#x3D;</p>
+<h5 id="AX：Accumlator-累加器"><a href="#AX：Accumlator-累加器" class="headerlink" title="AX：Accumlator 累加器"></a>AX：Accumlator 累加器</h5><p>特殊功能和MUL&#x2F;DIV有关，后面再说</p>
+<h5 id="BX：Base-基地址寄存器"><a href="#BX：Base-基地址寄存器" class="headerlink" title="BX：Base 基地址寄存器"></a>BX：Base 基地址寄存器</h5><p>可以存储地址并访问<br>说到地址，就得提一下汇编语言里地址的表示方法<br>在汇编语言里，内存中的地址BeLike：<code>204B:1001</code> （以16进制表示）<br><code>204B</code>是<strong>段地址</strong>，<code>1001</code>是<strong>偏移地址</strong>，各需要一个Word进行存储<br>有两个指令对应的获取内存单元的这两种地址<br>    <code>SEG</code>可以获取<strong>段地址</strong>（这个段就是指我们程序对应的段Segment），<code>OFFSET</code>可以获取<strong>偏移地址</strong><br>    使用这两个词只需要在MOV时加在变量前即可，比如<code>MOV BX offset X</code><br>在“通过地址找内容”这件事方面，一般用BX存储偏移地址<br>比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">X DW 1234H</span><br><span class="line">Y DW ?</span><br><span class="line">...</span><br><span class="line">MOV BX, OFFSET X;BX中存储了X的偏移地址</span><br><span class="line">MOV Y, [BX];BX存储的偏移地址对应的内容被存放到y</span><br></pre></td></tr></table></figure>
+
+<p>一般来说，<code>[BX]</code>就是指 <code>DS:[BX]</code>，默认段地址为数据段，当然你也可以指定为CS和SS</p>
+<h5 id="CX：Count-计数器"><a href="#CX：Count-计数器" class="headerlink" title="CX：Count 计数器"></a>CX：Count 计数器</h5><p>和循环指令<code>LOOP</code>有关</p>
+<p>LOOP指令类似于C语言中的For循环，<code>loop NAME</code>近似于<code>for(cx;;cx--)</code><br>关于LOOP的用法，具体到程序结构再说好了~。</p>
+<h5 id="DX：Data-数据寄存器"><a href="#DX：Data-数据寄存器" class="headerlink" title="DX：Data 数据寄存器"></a>DX：Data 数据寄存器</h5><p>特殊功能和MUL&#x2F;DIV有关，后面再说<br>也有与输入输出的暂存有关的功能（9.10号指令）</p>
+<h3 id="指针变址寄存器：SP，BP，SI，DI"><a href="#指针变址寄存器：SP，BP，SI，DI" class="headerlink" title="指针变址寄存器：SP，BP，SI，DI"></a>指针变址寄存器：SP，BP，SI，DI</h3><p>都倾向于用来存地址</p>
+<h5 id="SP：Stack-Pointer"><a href="#SP：Stack-Pointer" class="headerlink" title="SP：Stack Pointer"></a>SP：Stack Pointer</h5><p>和堆栈段的使用有关，定义堆栈段要记得手动把SP放在栈顶</p>
+<h5 id="BP：Base-Pointer"><a href="#BP：Base-Pointer" class="headerlink" title="BP：Base Pointer"></a>BP：Base Pointer</h5><p>和BX有类似的用法，只是一般更倾向于用在堆栈的数据里，<code>[BP]</code>默认为<code>SS:[BP]</code></p>
+<h5 id="SI：Source-Index"><a href="#SI：Source-Index" class="headerlink" title="SI：Source Index"></a>SI：Source Index</h5><h5 id="DI：Destination-Index"><a href="#DI：Destination-Index" class="headerlink" title="DI：Destination Index"></a>DI：Destination Index</h5><p>和BX有类似的用法，<code>[SI]</code>默认为<code>DS:[SI]</code><br>如果要转移数据，倾向于用SI存原地址，DI存新地址</p>
+<h3 id="段寄存器：CS，DS，SS，ES，IP"><a href="#段寄存器：CS，DS，SS，ES，IP" class="headerlink" title="段寄存器：CS，DS，SS，ES，IP"></a>段寄存器：CS，DS，SS，ES，IP</h3><p>段的存在方便我们以&#x3D;&#x3D;段地址+偏移地址&#x3D;&#x3D;的方式定位内存单元<br>刚刚在例子中看到，一般的程序我们定义三个段，Data、Stack和Code，它们的作用和名字是一致的</p>
+<p>这些寄存器都和程序段还有程序的运行有关。<br>在程序启动的时候，操作系统会把IP（Instruction Pointer）指向程序的第一句开始运行，之后IP会一直指向每次要运行的下一条指令（显然我们可以用IP玩一些花活，但是对于简单的程序，我们没有必要操作IP）</p>
+<p>在代码段的开始，我们就用Assume语句声明CS、DS、SS的地址<br>和CS不同，DS和SS寄存器的值需要我们手动指定，而与SS寄存器绑定的SP指针也需要我们手动设置（SS:SP指向的就是栈顶元素）</p>
+<p>ES是Extra Segment，程序有附加段落的时候才用，用法和DS SS差不多</p>
+<h3 id="标志寄存器-FLAG"><a href="#标志寄存器-FLAG" class="headerlink" title="标志寄存器 FLAG"></a>标志寄存器 FLAG</h3><p>只是写代码的话不用管它<br>16位分开使用，有各自不同的意思，结果会以下面的形式呈现在-R中</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://img-blog.csdnimg.cn/20200512122803832.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDk5NDU1Mg==,size_16,color_FFFFFF,t_70"></p>
+<h1 id="阶段练习"><a href="#阶段练习" class="headerlink" title="阶段练习"></a>阶段练习</h1><p>有以上的知识已经能写很多代码。</p>
+<h4 id="练习a-x-y"><a href="#练习a-x-y" class="headerlink" title="练习a: x+y"></a>练习a: x+y</h4><blockquote>
+<ol>
+<li>在数据段（data segment）中定义3个word，其中x&#x3D;1234H，y&#x3D;2345H, z&#x3D;?</li>
+<li>将x+y的结果保存在z中</li>
+</ol>
+</blockquote>
+<h1 id="进阶指令"><a href="#进阶指令" class="headerlink" title="进阶指令"></a>进阶指令</h1><p>这里开始会有一点复杂，建议一边写一边看</p>
+<h3 id="1-Label和Jump：跳转"><a href="#1-Label和Jump：跳转" class="headerlink" title="1. Label和Jump：跳转"></a>1. Label和Jump：跳转</h3><p>一段代码可以拥有label，Jump NAME 即可跳转至label位置<br>比如</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MAIN：MOV X,AX</span><br><span class="line">JUMP DONE</span><br><span class="line">MOV AX,Y</span><br><span class="line">...</span><br><span class="line">DONE:</span><br><span class="line">	MOV AH, 4CH</span><br><span class="line">	INT 21</span><br></pre></td></tr></table></figure>
+<p>在这段程序中，<code>MOV AX,Y</code>就会直接被跳过</p>
+<h3 id="2-分支和循环"><a href="#2-分支和循环" class="headerlink" title="2. 分支和循环"></a>2. 分支和循环</h3><h4 id="分支-CMP-JGE-x2F-…"><a href="#分支-CMP-JGE-x2F-…" class="headerlink" title="分支 CMP-JGE&#x2F;…"></a>分支 CMP-JGE&#x2F;…</h4><p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/../../../assets/Pasted%20image%2020221206112205.png"></p>
+<p>BeLike:(求abs(AX)保存在AX中)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MAIN:</span><br><span class="line">...</span><br><span class="line">CMP AX,0</span><br><span class="line">JGE DONE; Jump if Greater or Equal</span><br><span class="line">NEG AX</span><br><span class="line">DONE:</span><br><span class="line">...</span><br><span class="line">END MAIN</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="练习b-求最大值"><a href="#练习b-求最大值" class="headerlink" title="练习b: 求最大值"></a>练习b: 求最大值</h5><blockquote>
+<ol>
+<li>在数据段（data segment）中定义4个word，其中x&#x3D;1234H，y&#x3D;2345H, z&#x3D;-1234H，w&#x3D;?</li>
+<li>求max(x,y,z)储存于w</li>
+</ol>
+</blockquote>
+<h4 id="循环-LOOP"><a href="#循环-LOOP" class="headerlink" title="循环  LOOP"></a>循环  LOOP</h4><p>一种简单的循环，类似于<code>for(cx;;cx--)</code>。（事实上，你可以用JUMP和分支结构来实现循环）</p>
+<p>LOOP NM过程中：<br>    0. CMP CX,0<br>    1. 如果CX&gt;0，继续执行以下语句，否则跳出<br>    2. DEC CX(CX&gt;0)<br>    3. JUMP NM</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MOV CX,6</span><br><span class="line">NM: ...</span><br><span class="line">LOOP NM;这样写一共执行CX次（声明NM时执行1次，LOOP中执行CX-1次）</span><br></pre></td></tr></table></figure>
+
+<h5 id="练习c-数组初始化"><a href="#练习c-数组初始化" class="headerlink" title="练习c: 数组初始化"></a>练习c: 数组初始化</h5><blockquote>
+<p>在数据段（data segment）中分配100字节，并为每个字节依次赋值0-99。</p>
+</blockquote>
+<h3 id="3-堆栈的使用"><a href="#3-堆栈的使用" class="headerlink" title="3. 堆栈的使用"></a>3. 堆栈的使用</h3><h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>两个好用的方法</p>
+<h5 id="比较直观的（堆栈段中做定义）"><a href="#比较直观的（堆栈段中做定义）" class="headerlink" title="比较直观的（堆栈段中做定义）"></a>比较直观的（堆栈段中做定义）</h5><ol>
+<li>在堆栈段划分位置，保存栈顶位置</li>
+<li>在程序段开始的时候把堆栈段的位置告诉堆栈寄存器SS，把栈顶的位置告诉指针寄存器SP</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSEG SEGMENT</span><br><span class="line">      STACK DW  128 dup(?)</span><br><span class="line">      TOP   DW LENGTH STACK ;划定范围</span><br><span class="line">SSEG ENDS</span><br><span class="line"></span><br><span class="line">CSEG SEGMENT</span><br><span class="line">           ASSUME CS:CSEG,DS:DSEG,SS:SSEG</span><br><span class="line">      MAIN:</span><br><span class="line">           MOV    AX,DSEG</span><br><span class="line">           MOV    DS,AX</span><br><span class="line">           MOV    AX,SSEG</span><br><span class="line">           MOV    SS,AX</span><br><span class="line">           MOV    AX,TOP</span><br><span class="line">           MOV    SP,AX                        ;栈顶地址载入</span><br></pre></td></tr></table></figure>
+
+<h5 id="稍微没那么直观的（程序段中划空间）"><a href="#稍微没那么直观的（程序段中划空间）" class="headerlink" title="稍微没那么直观的（程序段中划空间）"></a>稍微没那么直观的（程序段中划空间）</h5><p>直接给SP赋值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SSEG SEGMENT</span><br><span class="line">SSEG ENDS</span><br><span class="line">;ss:0000-ss:1000</span><br><span class="line">CSEG SEGMENT</span><br><span class="line">            ASSUME CS:CSEG, DS:DSEG,SS:SSEG</span><br><span class="line">      BEGIN:MOV    AX,DSEG</span><br><span class="line">            MOV    DS,AX</span><br><span class="line">            MOV    AX,SSEG</span><br><span class="line">            MOV    SS,AX</span><br><span class="line">            MOV    SP,1000H                      ;手动规定了1000H的空置空间(OFFSET 0H-1000H)</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="PUSH和POP"><a href="#PUSH和POP" class="headerlink" title="PUSH和POP"></a>PUSH和POP</h4><p>注意：&#x3D;&#x3D;只能操作寄存器&#x3D;&#x3D;，不能直接操作内存单元<br><code>PUSH AX</code>：将AX的值入栈（如果AX两个字节，就会入栈两个字节，SP也相应-2）<br><code>POP AX</code>：出栈，内容保存在AX（如果AX两个字节，就会入栈两个字节，SP也相应+2）</p>
+<h4 id="用SP和BP操作堆栈"><a href="#用SP和BP操作堆栈" class="headerlink" title="用SP和BP操作堆栈"></a>用SP和BP操作堆栈</h4><p>在主程序只是暂存数据用的话，一般&#x3D;&#x3D;不用&#x3D;&#x3D;操作指针<br>但是，由于PROC需要使用到堆栈段，所以这是操作指针就是必要的，接下来在PROC中解释</p>
+<h3 id="4-lt-函数-gt-：PROC和MACRO"><a href="#4-lt-函数-gt-：PROC和MACRO" class="headerlink" title="4. &lt;函数&gt;：PROC和MACRO"></a>4. &lt;函数&gt;：PROC和MACRO</h3><h4 id="PROC-amp-CALL（子程序结构）"><a href="#PROC-amp-CALL（子程序结构）" class="headerlink" title="PROC&amp;CALL（子程序结构）"></a>PROC&amp;CALL（子程序结构）</h4><h5 id="定义-PROC-RET-ENDP"><a href="#定义-PROC-RET-ENDP" class="headerlink" title="定义 PROC-RET-ENDP"></a>定义 PROC-RET-ENDP</h5><p>(Near 属性是默认值)</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MAIN:</span><br><span class="line">CALL NM</span><br><span class="line"></span><br><span class="line">NM PROC</span><br><span class="line">...</span><br><span class="line">RET</span><br><span class="line">NM ENDP</span><br><span class="line">...</span><br><span class="line">END MAIN</span><br></pre></td></tr></table></figure>
+
+<p>完整的表达式：<br>调用：<code>CALL FAR/NEAR PTR NM</code><br>定义：<code>NM PROC FAR/NEAR</code></p>
+<h5 id="子程序属性和调用"><a href="#子程序属性和调用" class="headerlink" title="子程序属性和调用"></a>子程序属性和调用</h5><h6 id="段内调用"><a href="#段内调用" class="headerlink" title="段内调用"></a>段内调用</h6><p>只需要Main（主Label调用）的话空置即可（默认Near）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">A:...</span><br><span class="line">	CALL B;调用B</span><br><span class="line">	</span><br><span class="line">	PROC B:...;默认为near属性子程序</span><br><span class="line">	RET</span><br><span class="line">	B ENDP</span><br><span class="line">...</span><br><span class="line">END A</span><br></pre></td></tr></table></figure>
+
+
+<h6 id="段间调用"><a href="#段间调用" class="headerlink" title="段间调用"></a>段间调用</h6><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">PROC A:CALL FAR PTR B</span><br><span class="line">RET</span><br><span class="line">ENDP</span><br><span class="line"></span><br><span class="line">PROC B FAR:...;写明属性</span><br><span class="line">RET ENDP</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="小心堆栈！"><a href="#小心堆栈！" class="headerlink" title="小心堆栈！"></a>小心堆栈！</h5><p>PROC的本质是：入栈程序出口指针，RET时从回到出口指针的位置<br>所以：</p>
+<ol>
+<li>第一个出栈元素会是一个偏移地址</li>
+<li>如果最后SP的指针位置不对，就无法正确RET</li>
+</ol>
+<p>简单的方法：&#x3D;&#x3D;用寄存器BP保护SP&#x3D;&#x3D;，使用BP进行数据的读取</p>
+<h6 id="例子a-1-x-y子程序化"><a href="#例子a-1-x-y子程序化" class="headerlink" title="例子a(1): x+y子程序化"></a>例子a(1): x+y子程序化</h6><blockquote>
+<p>…</p>
+<ol>
+<li>在堆栈段push任意两个长度为1word的数据</li>
+<li>使用子程序，将这两个数据的和存储于AX<br>…</li>
+</ol>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">SUM PROC ;取两个栈顶元素求和储存到AX中</span><br><span class="line">         MOV    BP,SP</span><br><span class="line">         MOV    AX,[BP+2]</span><br><span class="line">         ADD    AX,[BP+4]</span><br><span class="line">         RET</span><br><span class="line">SUM ENDP</span><br></pre></td></tr></table></figure>
+
+<h6 id="练习b-1-求最大值-子程序化"><a href="#练习b-1-求最大值-子程序化" class="headerlink" title="练习b(1) 求最大值 子程序化"></a>练习b(1) 求最大值 子程序化</h6><blockquote>
+<ol>
+<li>在数据段（data segment）中定义4个word，其中x&#x3D;1234H，y&#x3D;2345H, z&#x3D;-1234H，w&#x3D;?</li>
+<li>在堆栈段push x,y,z</li>
+<li>求max(x,y,z)储存于w</li>
+</ol>
+</blockquote>
+<h4 id="Macro（宏定义）"><a href="#Macro（宏定义）" class="headerlink" title="*Macro（宏定义）"></a>*Macro（宏定义）</h4><p>PROC的使用有调用开销（程序的中断 跳转 继续），而MACRO没有<br>MACRO相当于写代码的人把重复写代码的过程交给了汇编器，相比子程序来说，是通过多占程序的内存来提高运行速度（对机器来说，每调用一次Macro，就是把这段指令重复了一次）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">NM MACRO R1,R2...(参数)</span><br><span class="line">...</span><br><span class="line">END M</span><br><span class="line"></span><br><span class="line">NM MACRO AX,BX...(寄存器取值)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="5-INT-21H指令：输入-x2F-输出"><a href="#5-INT-21H指令：输入-x2F-输出" class="headerlink" title="5. INT 21H指令：输入&#x2F;输出"></a>5. INT 21H指令：输入&#x2F;输出</h3><p>其实查书就可以了</p>
+<p>到这里汇编语言编程的&lt;大局&gt;已经描述完全</p>
+<p>关于一些语句的细节可以通过搜索引擎和汇编相关的任何书籍进行确认~</p>
+<h4 id="键盘输入"><a href="#键盘输入" class="headerlink" title="键盘输入"></a>键盘输入</h4><h5 id="1号指令：单个字符输入"><a href="#1号指令：单个字符输入" class="headerlink" title="1号指令：单个字符输入"></a>1号指令：单个字符输入</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MOV AH,1</span><br><span class="line">INT 21H</span><br></pre></td></tr></table></figure>
+<p>(内容会保存在AL)</p>
+<h5 id="10号指令：从键盘输入字符串"><a href="#10号指令：从键盘输入字符串" class="headerlink" title="10号指令：从键盘输入字符串"></a>10号指令：从键盘输入字符串</h5><p>内存里需要划分三个部分：<br>    1.一个字节存放最大长度（你写，溢出会被裁掉）<br>    2.一个字节存放实际长度（指令运行完CPU会写）<br>    3.一些字节用来存字符串</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">DATA SEGMENT</span><br><span class="line">    MAXLENGTH    DB 100           ;一个字节，用它存最大的长度</span><br><span class="line">    ACTUALLENGTH DB ?             ;一个字节，用它存实际的长度，在指令执行后会被填写</span><br><span class="line">    STRING       DB 100 DUP(?)    ;用来存字符串</span><br><span class="line">DATA ENDS</span><br><span class="line"></span><br><span class="line">STACK SEGMENT</span><br><span class="line">STACK ENDS</span><br><span class="line"></span><br><span class="line">CODE SEGMENT</span><br><span class="line">         ASSUME DS:DATA,SS:STACK,CS:CODE</span><br><span class="line">    MAIN:</span><br><span class="line">         MOV    AX,DATA</span><br><span class="line">         MOV    DS,AX</span><br><span class="line">         MOV    DX,OFFSET MAXLENGTH         ;把需要用到的内存块（三个部分）的地址存入DX</span><br><span class="line"></span><br><span class="line">         MOV    AH,10</span><br><span class="line">         INT    21H</span><br><span class="line"></span><br><span class="line">         MOV    AH,4CH</span><br><span class="line">         INT    21H</span><br><span class="line">CODE ENDS</span><br><span class="line">END MAIN</span><br></pre></td></tr></table></figure>
+
+<h4 id="显示器输出"><a href="#显示器输出" class="headerlink" title="显示器输出"></a>显示器输出</h4><h5 id="2号调用：单个字符输出"><a href="#2号调用：单个字符输出" class="headerlink" title="2号调用：单个字符输出"></a>2号调用：单个字符输出</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MOV DL,&#x27;A&#x27;</span><br><span class="line">MOV AH,2</span><br><span class="line">INT 21H</span><br></pre></td></tr></table></figure>
+
+<h5 id="9号调用：字符串输出"><a href="#9号调用：字符串输出" class="headerlink" title="9号调用：字符串输出"></a>9号调用：字符串输出</h5><p>你的字符串必须要以’$‘结尾！不然输出不会结束！（类似于’\0’，’$‘是一种字符串的终止符）<br>程序会将DS:DX地址开始输出字符到’$‘结尾</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">MOV DX,OFFSET STRING</span><br><span class="line">MOV AH,9</span><br><span class="line">INT 21H</span><br></pre></td></tr></table></figure>
+
+<h3 id="综合练习"><a href="#综合练习" class="headerlink" title="综合练习"></a>综合练习</h3><h4 id="练习d-大小写转换-输入输出"><a href="#练习d-大小写转换-输入输出" class="headerlink" title="练习d. 大小写转换+输入输出"></a>练习d. 大小写转换+输入输出</h4><blockquote>
+<p>（分支&#x2F;循环&#x2F;子程序+输入输出）<br>用户输入一个单词，程序将所有大写转换为小写并输出到显示器<br>(注：’a’&#x3D;’A’+20H)</p>
+</blockquote>
+
+
+<div class="article-footer reveal fs14"><section id="license"><div class="header"><span>许可协议</span></div><div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div></section></div>
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/Tavg/Sakura/2655f8cd.html">逢魔が刻 ～かくりよの縁～</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/Coding/5b511fc.html">汇编语言 全家桶</a></div></section></div>
+
+
+
+
+
+
+  <div class='related-wrap md-text reveal' id="comments">
+    <section class='header cmt-title cap theme'>
+      快来参与讨论吧
+    </section>
+    <section class='body cmt-body giscus'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="giscus" data-repo="aleryxiao/aleryxiao.github.io" data-repo-id="R_kgDOIdw0jw" data-category="Announcements" data-category-id="DIC_kwDOIdw0j84CTXeH" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous"></div>
+
+    </section>
+  </div>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客</span><a href="/">近期</a><a href="/categories">分类</a><a href="/tags">标签</a><a href="/">归档</a></div><div class="sitemap-group"><span class="fs14">整理</span><a href="/wiki">文件夹</a></div><div class="sitemap-group"><span class="fs14">社交</span><a href="/dynamic">动态</a><a href="/friend">友链</a><a href="/guestbook">留言板</a></div><div class="sitemap-group"><span class="fs14">更多</span><a href="/about">关于</a><a target="_blank" rel="noopener" href="https://github.com/aleryxiao">GitHub</a></div></div><div class="text"><p>本站由 <a target="_blank" rel="noopener" href="https://space.bilibili.com/19610138">@AleryXiao</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.18.5';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.18.5';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadJS() {
+    const els = document.querySelectorAll("#comments #giscus");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://giscus.app/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    loadJS();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

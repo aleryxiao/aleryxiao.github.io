@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.18.5">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>python：Tkinter - 極楽浄土</title>
+
+  
+    <meta name="description" content="https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_62651706&#x2F;article&#x2F;details&#x2F;127026626 这篇博客将详细介绍 tkinter 模块的子模块，如消息框子模块（messagebox）、颜色选择器子模块（colorchooser）以及文件对话框子模块（filedialog），欢迎大家参考和学习！   一、messagebox 子模块一">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tkinter">
+<meta property="og:url" content="https://aleryxiao.github.io/Engineering/python/Tkinter.html">
+<meta property="og:site_name" content="極楽浄土">
+<meta property="og:description" content="https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_62651706&#x2F;article&#x2F;details&#x2F;127026626 这篇博客将详细介绍 tkinter 模块的子模块，如消息框子模块（messagebox）、颜色选择器子模块（colorchooser）以及文件对话框子模块（filedialog），欢迎大家参考和学习！   一、messagebox 子模块一">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://aleryxiao.github.io/assets/eaf1e8d080154dcdbdd2a25233c32b73-20221014143951-fvmd9a9.png">
+<meta property="og:image" content="https://aleryxiao.github.io/assets/7d163eebf8cb4c9f90cb8b36f16c56f1-20221014143951-7fvmpbb.png">
+<meta property="og:image" content="https://aleryxiao.github.io/assets/ba48d81cdcda4457b5dff7d5d9dfecad-20221014143950-6scrsdk.png">
+<meta property="og:image" content="https://aleryxiao.github.io/assets/e9226f9455fc4b559ec185d1fa1a955e-20221014143950-d4t9490.png">
+<meta property="og:image" content="https://aleryxiao.github.io/assets/d781a70c8e8a4d86a81c6094c595268a-20221014143950-6jg1g08.png">
+<meta property="og:image" content="https://aleryxiao.github.io/assets/ef6b4f6a1adc4597893990080c01cfcc-20221014143950-nps1p0x.png">
+<meta property="og:image" content="https://aleryxiao.github.io/assets/1b2d2b20a3ee44b1ac81071e9d4c1ad7-20221014143950-m5e0lkf.png">
+<meta property="og:image" content="https://aleryxiao.github.io/assets/8533c2354f854977aaa8c4c7e41d8c8a-20221014143950-n2ruzsf.png">
+<meta property="og:image" content="https://aleryxiao.github.io/assets/9160a4282b894d15852fea26c6b1db18-20221014143950-k5u7l6l.png">
+<meta property="og:image" content="https://aleryxiao.github.io/assets/7a88c8f8a4ff495cacba02befb8f6dd0-20221014143950-md52zs2.png">
+<meta property="og:image" content="https://aleryxiao.github.io/assets/a8ed689b7ea7490e9eeb5adb93f6c7c3-20221014143951-2c0jzj7.png">
+<meta property="og:image" content="https://aleryxiao.github.io/assets/671b882192924810aff231884002d51a-20221014143950-10msq0o.png">
+<meta property="og:image" content="https://aleryxiao.github.io/assets/ff63326fbdf44eb899104a6ffbf0210d-20221014143951-90emjhd.png">
+<meta property="og:image" content="https://aleryxiao.github.io/assets/254145fa415d4a76804b98e23815d2ba-20221014143951-n1bffxu.png">
+<meta property="og:image" content="https://aleryxiao.github.io/assets/fd13cc0f3ed149da94aba7d42112cf40-20221014143951-ls1yrhn.png">
+<meta property="article:published_time" content="2023-01-03T04:34:23.639Z">
+<meta property="article:modified_time" content="2023-01-03T04:34:23.639Z">
+<meta property="article:author" content="AleryXiao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://aleryxiao.github.io/assets/eaf1e8d080154dcdbdd2a25233c32b73-20221014143951-fvmd9a9.png">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="極楽浄土" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="/site_assets/favicon.jpg">
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='wiki'>
+    
+
+  
+
+
+
+
+<div class="widgets"><widget class="widget-wrapper logo-wrap wiki"><div class="widget-body"><a style="filter: grayscale(100%)" class="wiki-home cap" href="/"><svg aria-hidden="true" viewBox="0 0 16 16" width="1rem" height="1rem" fill="currentColor"><path fill-rule="evenodd" d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"></path></svg>所有项目</a><a class="title" href="/Engineering/python/index.html"><div class="main" ff="title">python</div><div class="sub normal cap">about python</div><div class="sub hover cap" style="opacity:0"> @AleryXiao</div></a></div></widget>
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/Engineering/python/" placeholder="在 /Engineering/python/ 中搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+
+
+<widget class="widget-wrapper toc multi" id="data-toc"><div class="widget-header cap dis-select"><span class="name">Set Environment</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/index.html#start"><span class="toc-text">Index</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/Vscode%E9%85%8D%E7%BD%AE.html"><span class="toc-text">Vscode配置</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/PipenV+Pyinstaller.html"><span class="toc-text">PipenV+Pyinstaller</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/Xpath.html"><span class="toc-text">Xpath</span></a></div></div><div class="widget-header cap dis-select"><span class="name">Std Grammar</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/f-string.html"><span class="toc-text">f-string</span></a></div></div><div class="widget-header cap dis-select"><span class="name">Ocr</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/CUDA%20&%20pip.html"><span class="toc-text">CUDA & pip</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/EasyOCR.html"><span class="toc-text">EasyOCR</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/%E8%85%BE%E8%AE%AF%E4%BA%91OCR.html"><span class="toc-text">腾讯云OCR</span></a></div></div><div class="widget-header cap dis-select"><span class="name">库使用</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/Matplotlib.html"><span class="toc-text">matplotlib</span></a></div><div class="doc-tree active"><a class="doc-tree-link active" href="/Engineering/python/Tkinter.html"><span class="toc-text">Tkinter</span></a><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81messagebox-%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="toc-text">一、messagebox 子模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E7%94%A8%E6%B3%95"><span class="toc-text">一般用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90showinfo%E3%80%91"><span class="toc-text">【showinfo】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90showwarning%E3%80%91"><span class="toc-text">【showwarning】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90showerror%E3%80%91"><span class="toc-text">【showerror】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90askquestion%E3%80%91"><span class="toc-text">【askquestion】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90askokcancel%E3%80%91"><span class="toc-text">【askokcancel】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90askyesno%E3%80%91"><span class="toc-text">【askyesno】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90askyesnocancel%E3%80%91"><span class="toc-text">【askyesnocancel】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90askretrycancel%E3%80%91"><span class="toc-text">【askretrycancel】</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E6%93%8D%E4%BD%9C"><span class="toc-text">高级操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81colorchooser-%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="toc-text">二、colorchooser 子模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="toc-text">代码示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA"><span class="toc-text">效果展示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81filedialog-%E5%AD%90%E6%A8%A1%E5%9D%97"><span class="toc-text">三、filedialog 子模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90askopenfilename%E3%80%91"><span class="toc-text">【askopenfilename】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90asksaveasfilename%E3%80%91"><span class="toc-text">【asksaveasfilename】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90askopenfilenames%E3%80%91"><span class="toc-text">【askopenfilenames】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90askopenfile%E3%80%91"><span class="toc-text">【askopenfile】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90askopenfiles%E3%80%91"><span class="toc-text">【askopenfiles】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90asksaveasfile%E3%80%91"><span class="toc-text">【asksaveasfile】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%80%90askdirectory%E3%80%91"><span class="toc-text">【askdirectory】</span></a></li></ol></li></ol></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+  
+  
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" id="home" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" id="menu" href="/wiki/">项目</a><span class="sep"></span><a class="cap breadcrumb" id="proj" href="/Engineering/python/index.html">python</a></div><div id="post-meta">更新于&nbsp;<time datetime="2023-01-03T04:34:23.639Z">2023-01-03</time></div></div>
+
+  <article class='md-text content wiki'>
+  <h1 class="article-title"><span>Tkinter</span></h1>
+  <ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_62651706/article/details/127026626">https://blog.csdn.net/weixin_62651706&#x2F;article&#x2F;details&#x2F;127026626</a></li>
+<li>这篇博客将详细介绍 tkinter 模块的子模块，如消息框子模块（messagebox）、颜色选择器子模块（colorchooser）以及文件对话框子模块（filedialog），欢迎大家参考和学习！</li>
+</ul>
+<hr>
+<h2 id="一、messagebox-子模块"><a href="#一、messagebox-子模块" class="headerlink" title="一、messagebox 子模块"></a>一、messagebox 子模块</h2><h2 id="一般用法"><a href="#一般用法" class="headerlink" title="一般用法"></a>一般用法</h2><blockquote>
+<p>messagebox 子模块的一般作用就是产生一个消息框，提供的消息框种类有 8 个，下面将一个一个介绍</p>
+</blockquote>
+<h3 id="【showinfo】"><a href="#【showinfo】" class="headerlink" title="【showinfo】"></a>【showinfo】</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">showinfo(title=<span class="literal">None</span>, message=<span class="literal">None</span>, **options)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>信息提示消息框</strong></p>
+<p>【title】弹窗的标题</p>
+<p>【message】字符串，要显示的信息</p>
+<p>【options】其他选项，具体见高级操作</p>
+<p>【返回值】字符串对象</p>
+<p>【提示音】信息提示音</p>
+</blockquote>
+<p>　　<strong>代码示例</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter.messagebox</span><br><span class="line"></span><br><span class="line">return_value = tkinter.messagebox.showinfo(<span class="string">&#x27;温馨提示&#x27;</span>, <span class="string">&#x27;您还没有给我点赞哦！\n记得点赞，不要忘记啦！&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(return_value), return_value)</span><br><span class="line"><span class="comment"># &lt;class &#x27;str&#x27;&gt; ok</span></span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>效果展示</strong></p>
+<p>　　<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/eaf1e8d080154dcdbdd2a25233c32b73-20221014143951-fvmd9a9.png" alt="showinfo"></p>
+<h3 id="【showwarning】"><a href="#【showwarning】" class="headerlink" title="【showwarning】"></a>【showwarning】</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">showwarning(title=<span class="literal">None</span>, message=<span class="literal">None</span>, **options)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>警告提示消息框</strong></p>
+<p>【title】弹窗的标题</p>
+<p>【message】字符串，要显示的信息</p>
+<p>【options】其他选项，具体见高级操作</p>
+<p>【返回值】字符串对象</p>
+<p>【提示音】信息提示音</p>
+</blockquote>
+<p>　　<strong>代码示例</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter.messagebox</span><br><span class="line"></span><br><span class="line">return_value = tkinter.messagebox.showwarning(<span class="string">&#x27;严重警告&#x27;</span>, <span class="string">&#x27;如果你还不给我点赞，你的电脑将收到病毒攻击！&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(return_value), return_value)</span><br><span class="line"><span class="comment"># &lt;class &#x27;str&#x27;&gt; ok</span></span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>效果展示</strong></p>
+<p>　　<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/7d163eebf8cb4c9f90cb8b36f16c56f1-20221014143951-7fvmpbb.png"></p>
+<p>　　showwarning</p>
+<h3 id="【showerror】"><a href="#【showerror】" class="headerlink" title="【showerror】"></a>【showerror】</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">showerror(title=<span class="literal">None</span>, message=<span class="literal">None</span>, **options)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>错误提示消息框</strong></p>
+<p>【title】弹窗的标题</p>
+<p>【message】字符串，要显示的信息</p>
+<p>【options】其他选项，具体见高级操作</p>
+<p>【返回值】字符串对象</p>
+<p>【提示音】错误提示音</p>
+</blockquote>
+<p>　　<strong>代码示例</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter.messagebox</span><br><span class="line"></span><br><span class="line">return_value = tkinter.messagebox.showerror(<span class="string">&#x27;系统错误&#x27;</span>, <span class="string">&#x27;系统正在受到未知来源的病毒攻击！\n(ERROR_3X007)&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(return_value), return_value)</span><br><span class="line"><span class="comment"># &lt;class &#x27;str&#x27;&gt; ok</span></span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>效果展示</strong></p>
+<p>　　<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/ba48d81cdcda4457b5dff7d5d9dfecad-20221014143950-6scrsdk.png"></p>
+<p>　　showerror</p>
+<h3 id="【askquestion】"><a href="#【askquestion】" class="headerlink" title="【askquestion】"></a>【askquestion】</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">askquestion(title=<span class="literal">None</span>, message=<span class="literal">None</span>, **options)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>一般询问消息框</strong></p>
+<p>【title】弹窗的标题</p>
+<p>【message】字符串，要显示的信息</p>
+<p>【options】其他选项，具体见高级操作</p>
+<p>【返回值】字符串对象</p>
+<p>【提示音】无</p>
+<p><strong>特别的，这个窗口无法点击关闭按钮，只能点击“是(Y)”或者“否(N)”</strong></p>
+<p><strong>与 askyesno 的区别在于，该返回值为 str，而 askyesno 为 bool</strong></p>
+</blockquote>
+<p>　　<strong>代码示例</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter.messagebox</span><br><span class="line"></span><br><span class="line">return_value = tkinter.messagebox.askquestion(<span class="string">&#x27;是否点赞&#x27;</span>, <span class="string">&#x27;您要给我点赞是吗？&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(return_value), return_value)</span><br><span class="line"><span class="comment"># &lt;class &#x27;str&#x27;&gt; yes(点击是) no(点击否)</span></span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>效果展示</strong></p>
+<p>　　<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/e9226f9455fc4b559ec185d1fa1a955e-20221014143950-d4t9490.png"></p>
+<p>　　askquestion</p>
+<h3 id="【askokcancel】"><a href="#【askokcancel】" class="headerlink" title="【askokcancel】"></a>【askokcancel】</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">askokcancel(title=<span class="literal">None</span>, message=<span class="literal">None</span>, **options)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>“确定取消”询问消息框</strong></p>
+<p>【title】弹窗的标题</p>
+<p>【message】字符串，要显示的信息</p>
+<p>【options】其他选项，具体见高级操作</p>
+<p>【返回值】布尔值</p>
+<p>【提示音】无</p>
+</blockquote>
+<p>　　<strong>代码示例</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter.messagebox</span><br><span class="line"></span><br><span class="line">return_value = tkinter.messagebox.askokcancel(<span class="string">&#x27;点赞确认&#x27;</span>, <span class="string">&#x27;是否给这篇博客点赞？&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(return_value), return_value)</span><br><span class="line"><span class="comment"># &lt;class &#x27;bool&#x27;&gt; True(点击确定) False(点击取消或关闭)</span></span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>效果展示</strong></p>
+<p>　　<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/d781a70c8e8a4d86a81c6094c595268a-20221014143950-6jg1g08.png"></p>
+<p>　　askokcancel</p>
+<h3 id="【askyesno】"><a href="#【askyesno】" class="headerlink" title="【askyesno】"></a>【askyesno】</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">askyesno(title=<span class="literal">None</span>, message=<span class="literal">None</span>, **options)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>“是否”询问消息框</strong></p>
+<p>【title】弹窗的标题</p>
+<p>【message】字符串，要显示的信息</p>
+<p>【options】其他选项，具体见高级操作</p>
+<p>【返回值】布尔值</p>
+<p>【提示音】无</p>
+<p><strong>特别的，这个窗口无法点击关闭按钮，只能点击“是(Y)”或者“否(N)”</strong></p>
+</blockquote>
+<p>　　<strong>代码示例</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter.messagebox</span><br><span class="line"></span><br><span class="line">return_value = tkinter.messagebox.askyesno(<span class="string">&#x27;收藏确认&#x27;</span>, <span class="string">&#x27;是否收藏这篇博客？&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(return_value), return_value)</span><br><span class="line"><span class="comment"># &lt;class &#x27;bool&#x27;&gt; True(点击是) False(点击否)</span></span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>效果展示</strong></p>
+<p>　　<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/ef6b4f6a1adc4597893990080c01cfcc-20221014143950-nps1p0x.png"></p>
+<p>　　askyesno</p>
+<h3 id="【askyesnocancel】"><a href="#【askyesnocancel】" class="headerlink" title="【askyesnocancel】"></a>【askyesnocancel】</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">askyesnocancel(title=<span class="literal">None</span>, message=<span class="literal">None</span>, **options)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>“是否取消”询问消息框</strong></p>
+<p>【title】弹窗的标题</p>
+<p>【message】字符串，要显示的信息</p>
+<p>【options】其他选项，具体见高级操作</p>
+<p>【返回值】布尔值或者 None</p>
+<p>【提示音】无</p>
+</blockquote>
+<p>　　<strong>代码示例</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter.messagebox</span><br><span class="line"></span><br><span class="line">return_value = tkinter.messagebox.askyesnocancel(<span class="string">&#x27;支持&#x27;</span>, <span class="string">&#x27;是否点赞并收藏这篇博客？&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(return_value), return_value)</span><br><span class="line"><span class="comment"># &lt;class &#x27;bool&#x27;&gt; True(点击是) False(点击否) None(点击取消或关闭)</span></span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>效果展示</strong></p>
+<p>　　<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/1b2d2b20a3ee44b1ac81071e9d4c1ad7-20221014143950-m5e0lkf.png"></p>
+<h3 id="【askretrycancel】"><a href="#【askretrycancel】" class="headerlink" title="【askretrycancel】"></a>【askretrycancel】</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">askretrycancel(title=<span class="literal">None</span>, message=<span class="literal">None</span>, **options)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>“重试取消”询问消息框</strong></p>
+<p>【title】弹窗的标题</p>
+<p>【message】字符串，要显示的信息</p>
+<p>【options】其他选项，具体见高级操作</p>
+<p>【返回值】布尔值</p>
+<p>【提示音】信息提示音</p>
+</blockquote>
+<p>　　<strong>代码示例</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter.messagebox</span><br><span class="line"></span><br><span class="line">return_value = tkinter.messagebox.askretrycancel(<span class="string">&#x27;提示&#x27;</span>, <span class="string">&#x27;运气不佳，白嫖失败！&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(return_value), return_value)</span><br><span class="line"><span class="comment"># &lt;class &#x27;bool&#x27;&gt; True(点击重试) False(点击取消或关闭)</span></span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>效果展示</strong></p>
+<p>　　<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/8533c2354f854977aaa8c4c7e41d8c8a-20221014143950-n2ruzsf.png"></p>
+<p>　　askretrycancel</p>
+<h2 id="高级操作"><a href="#高级操作" class="headerlink" title="高级操作"></a>高级操作</h2><blockquote>
+<p>高级操作呢，一般人是不知道的，只有看了子模块 messagebox 源代码的人才知道，为什么这么说呢，下面我们看看部分源代码就知道了</p>
+</blockquote>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># tk common message boxes</span></span><br><span class="line"><span class="comment"># tk的常见消息框</span></span><br><span class="line"><span class="comment"># this module provides an interface to the native message boxes</span></span><br><span class="line"><span class="comment"># available in Tk 4.2 and newer.</span></span><br><span class="line"><span class="comment"># 该模块为Tk 4.2及更新版本中可用的本地消息框提供接口</span></span><br><span class="line"><span class="comment"># written by Fredrik Lundh, May 1997</span></span><br><span class="line"><span class="comment"># 作者：Fredrik Lundh，1997年5月</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># options (all have default values):</span></span><br><span class="line"><span class="comment"># 参数（都有默认值）</span></span><br><span class="line"><span class="comment"># - default: which button to make default (one of the reply codes)</span></span><br><span class="line"><span class="comment"># 设置默认值的按钮（其中一个回复代码）</span></span><br><span class="line"><span class="comment"># - icon: which icon to display (see below)</span></span><br><span class="line"><span class="comment"># 要显示的图标（见下文）</span></span><br><span class="line"><span class="comment"># - message: the message to display</span></span><br><span class="line"><span class="comment"># 要显示的消息</span></span><br><span class="line"><span class="comment"># - parent: which window to place the dialog on top of</span></span><br><span class="line"><span class="comment"># 将对话框放置在哪个窗口的上面</span></span><br><span class="line"><span class="comment"># - title: dialog title</span></span><br><span class="line"><span class="comment"># 对话框标题</span></span><br><span class="line"><span class="comment"># - type: dialog type; that is, which buttons to display (see below)</span></span><br><span class="line"><span class="comment"># 对话框类型；也就是说，要显示哪些按钮（见下文）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># constants</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># icons               【用于icon参数】</span></span><br><span class="line">ERROR = <span class="string">&quot;error&quot;</span>        <span class="comment"># “错误”图标</span></span><br><span class="line">INFO = <span class="string">&quot;info&quot;</span>          <span class="comment"># “信息”图标</span></span><br><span class="line">QUESTION = <span class="string">&quot;question&quot;</span>  <span class="comment"># “询问”图标</span></span><br><span class="line">WARNING = <span class="string">&quot;warning&quot;</span>    <span class="comment"># “警告”图标</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># types                               【用于type参数】</span></span><br><span class="line">ABORTRETRYIGNORE = <span class="string">&quot;abortretryignore&quot;</span>  <span class="comment"># 中止、重试、忽略  （3个按钮的模式）</span></span><br><span class="line">OK = <span class="string">&quot;ok&quot;</span>                              <span class="comment"># 确定             （1个按钮的模式）</span></span><br><span class="line">OKCANCEL = <span class="string">&quot;okcancel&quot;</span>                  <span class="comment"># 确定、取消       （2个按钮的模式）</span></span><br><span class="line">RETRYCANCEL = <span class="string">&quot;retrycancel&quot;</span>            <span class="comment"># 重试、取消       （2个按钮的模式）</span></span><br><span class="line">YESNO = <span class="string">&quot;yesno&quot;</span>                        <span class="comment"># 是、否           （2个按钮的模式）</span></span><br><span class="line">YESNOCANCEL = <span class="string">&quot;yesnocancel&quot;</span>            <span class="comment"># 是、否、取消     （3个按钮的模式）</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># replies         【用于default参数】</span></span><br><span class="line">ABORT = <span class="string">&quot;abort&quot;</span>    <span class="comment"># 默认为“中止”按钮</span></span><br><span class="line">RETRY = <span class="string">&quot;retry&quot;</span>    <span class="comment"># 默认为“重试”按钮</span></span><br><span class="line">IGNORE = <span class="string">&quot;ignore&quot;</span>  <span class="comment"># 默认为“忽略”按钮</span></span><br><span class="line">OK = <span class="string">&quot;ok&quot;</span>          <span class="comment"># 默认为“确定”按钮</span></span><br><span class="line">CANCEL = <span class="string">&quot;cancel&quot;</span>  <span class="comment"># 默认为“取消”按钮</span></span><br><span class="line">YES = <span class="string">&quot;yes&quot;</span>        <span class="comment"># 默认为“是”按钮</span></span><br><span class="line">NO = <span class="string">&quot;no&quot;</span>          <span class="comment"># 默认为“否”按钮</span></span><br></pre></td></tr></table></figure>
+
+<p>上面这段说明（不含中文翻译）是子模块 messagebox 的模块文档说明（<strong>很重要</strong>），我们发现啊，除了我们可以直接看到的 title 参数和 message 参数外，其实还有其他参数的，只不过它们被用 **options 给代替了，导致我们不知道还有什么参数（可能是因为一般不用修改这些参数，它们只需要采用默认值就行了叭）</p>
+<p>（作者 Fredrik Lundh 在1997年就写出了这么牛逼轰轰的代码，膜拜啊 ~ 膜拜啊 ~ orz）</p>
+</blockquote>
+<p>　　<strong>代码示例</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter.messagebox</span><br><span class="line"></span><br><span class="line">return_value = tkinter.messagebox.askyesnocancel(<span class="string">&#x27;程序错误&#x27;</span>, <span class="string">&#x27;您可以选择终止程序的运行\n或者重新尝试运行\n或者忽略错误继续运行&#x27;</span>,</span><br><span class="line">                                                 default=tkinter.messagebox.ABORT,</span><br><span class="line">                                                 icon=tkinter.messagebox.ERROR,</span><br><span class="line"><span class="built_in">type</span>=tkinter.messagebox.ABORTRETRYIGNORE)</span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>效果展示</strong></p>
+<p>　　<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/9160a4282b894d15852fea26c6b1db18-20221014143950-k5u7l6l.png"></p>
+<p>　　高级操作</p>
+<p>　　<strong>还有其他的大家也可以积极尝试呀！</strong></p>
+<h2 id="二、colorchooser-子模块"><a href="#二、colorchooser-子模块" class="headerlink" title="二、colorchooser 子模块"></a>二、colorchooser 子模块</h2><blockquote>
+<p>你们知道颜色<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E9%80%89%E6%8B%A9%E5%99%A8&spm=1001.2101.3001.7020">选择器</a>是什么东东嘛？打开 Word 文档，随便输入什么东西，然后选中输入的文本，修改其颜色时，可以看到有个“其他颜色”的按钮，点一下，就会弹出来一个弹窗，而这个弹窗就是 Word 的颜色选择器，它可以得到 RGB 码中的任意一种颜色</p>
+<p>而 tkinter 模块也有一个内置的颜色选择器，功能和别的颜色选择器差不多，但是样子稍有不同</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">askcolor(color: <span class="built_in">str</span> | <span class="built_in">bytes</span> | <span class="literal">None</span> = ..., </span><br><span class="line">         *, </span><br><span class="line">         initialcolor: _Color = ..., </span><br><span class="line">         parent: Misc = ..., </span><br><span class="line">         title: <span class="built_in">str</span> = ...)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>【color】同下面的 initialcolor</p>
+<p>【initialcolor】初始颜色，格式为含有 3 个范围在 0~255 整数的元组</p>
+<p>【parent】颜色对话框的父窗口（颜色对话框将显示在其上面）</p>
+<p>【title】对话框的标题</p>
+<p>【返回值】一个元组，格式: (颜色元组, RGB码)</p>
+</blockquote>
+<h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter.colorchooser</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(tkinter.colorchooser.askcolor())</span><br><span class="line"><span class="comment"># (None, None) 点击取消或关闭</span></span><br><span class="line"><span class="comment"># ((0, 0, 0), &#x27;#000000&#x27;) 格式: (颜色元组, RGB码)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h3><p>　　<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/7a88c8f8a4ff495cacba02befb8f6dd0-20221014143950-md52zs2.png"></p>
+<p>　　colorchooser</p>
+<p>　　<strong>下面给出一张对比图（Word 的颜色选择器）</strong></p>
+<p>　　<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/a8ed689b7ea7490e9eeb5adb93f6c7c3-20221014143951-2c0jzj7.png"></p>
+<p>　　Word 文档的颜色选择器</p>
+<p>　　其实他俩差不了多少</p>
+<h2 id="三、filedialog-子模块"><a href="#三、filedialog-子模块" class="headerlink" title="三、filedialog 子模块"></a>三、filedialog 子模块</h2><blockquote>
+<p>我们平时打开文件啊、保存文件等，都会有一个弹窗弹出来，让我们选择打开的文件或保存路径等，而这些弹窗就是文件对话框，很幸运啊，tkinter 模块的 filedialog 子模块早在 1997 年就有了这些接口（作者还是上文提到的那个“大牛”），让我们来看一看吧</p>
+</blockquote>
+<h3 id="【askopenfilename】"><a href="#【askopenfilename】" class="headerlink" title="【askopenfilename】"></a>【askopenfilename】</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">askopenfilename(*, </span><br><span class="line">                defaultextension: <span class="built_in">str</span> | <span class="literal">None</span> = ..., </span><br><span class="line">                filetypes: Iterable[<span class="built_in">tuple</span>[<span class="built_in">str</span>, <span class="built_in">str</span> | <span class="built_in">list</span>[<span class="built_in">str</span>] | <span class="built_in">tuple</span>[<span class="built_in">str</span>, ...]]] | <span class="literal">None</span> = ...,</span><br><span class="line">                initialdir: StrOrBytesPath | <span class="literal">None</span> = ..., </span><br><span class="line">                initialfile: StrOrBytesPath | <span class="literal">None</span> = ..., </span><br><span class="line">                parent: Misc | <span class="literal">None</span> = ..., </span><br><span class="line">                title: <span class="built_in">str</span> | <span class="literal">None</span> = ..., </span><br><span class="line">                typevariable: StringVar | <span class="built_in">str</span> | <span class="literal">None</span> = ...)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>文件打开</strong></p>
+<p>【defaultextension】默认扩展名（如果没有写扩展名）</p>
+<p>【filetypes】文件类型选项（可迭代对象）</p>
+<p>格式：**[(文件说明, 文件扩展名)]** 或者 **[(文件说明, [文件扩展名1, 文件扩展名2, …])] **</p>
+<p>【initialdir】初始目录</p>
+<p>【initailfile】初始文件名（可加扩展名，也可不加，不加则使用默认扩展名）</p>
+<p>【parent】父窗口（弹窗会显示在父窗口上面，也可以空着为默认值，则直接弹出）</p>
+<p>【title】窗口标题</p>
+<p>【typevariable】类型变量</p>
+<p>【返回值】字符串对象（文件路径）</p>
+</blockquote>
+<p>　　<strong>代码示例</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter.filedialog</span><br><span class="line"></span><br><span class="line">return_value = tkinter.filedialog.askopenfilename(filetypes=[(<span class="string">&#x27;All Files&#x27;</span>, <span class="string">&#x27;.*&#x27;</span>)], </span><br><span class="line">                                                  title=<span class="string">&#x27;打开文件&#x27;</span>, </span><br><span class="line">                                                  initialfile=<span class="string">&#x27;Python.py&#x27;</span>, </span><br><span class="line">                                                  initialdir=<span class="string">&#x27;C:/Users/小康/Desktop&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(return_value), return_value)</span><br><span class="line"><span class="comment"># &lt;class &#x27;str&#x27;&gt; C:/Users/小康/Desktop/示例文件.txt (选中 示例文件.txt)</span></span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>效果展示</strong></p>
+<p>　　<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/671b882192924810aff231884002d51a-20221014143950-10msq0o.png"></p>
+<p>　　askopenfilename</p>
+<h3 id="【asksaveasfilename】"><a href="#【asksaveasfilename】" class="headerlink" title="【asksaveasfilename】"></a>【asksaveasfilename】</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">asksaveasfilename(*, </span><br><span class="line">                  confirmoverwrite: <span class="built_in">bool</span> | <span class="literal">None</span> = ..., </span><br><span class="line">                  defaultextension: <span class="built_in">str</span> | <span class="literal">None</span> = ..., </span><br><span class="line">                  filetypes: Iterable[<span class="built_in">tuple</span>[<span class="built_in">str</span>, <span class="built_in">str</span> | <span class="built_in">list</span>[<span class="built_in">str</span>] | <span class="built_in">tuple</span>[<span class="built_in">str</span>, ...]]] | <span class="literal">None</span> = ...,</span><br><span class="line">                  initialdir: StrOrBytesPath | <span class="literal">None</span> = ..., </span><br><span class="line">                  initialfile: StrOrBytesPath | <span class="literal">None</span> = ..., </span><br><span class="line">                  parent: Misc | <span class="literal">None</span> = ..., </span><br><span class="line">                  title: <span class="built_in">str</span> | <span class="literal">None</span> = ..., </span><br><span class="line">                  typevariable: StringVar | <span class="built_in">str</span> | <span class="literal">None</span> = ...)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>文件另存为</strong></p>
+<p>【confirmoverwrite】是否覆盖重名（原）文件（默认为True，即“已存在”会询问是否覆盖）</p>
+<p>【defaultextension】默认扩展名（如果没有写扩展名）</p>
+<p>【filetypes】文件类型选项（可迭代对象）</p>
+<p>格式：**[(文件说明, 文件扩展名)]** 或者 **[(文件说明, [文件扩展名1, 文件扩展名2, …])] **</p>
+<p>【initialdir】初始目录</p>
+<p>【initailfile】初始文件名（可加扩展名，也可不加，不加则使用默认扩展名）</p>
+<p>【parent】父窗口（弹窗会显示在父窗口上面，也可以空着为默认值，则直接弹出）</p>
+<p>【title】窗口标题</p>
+<p>【typevariable】类型变量</p>
+<p>【返回值】字符串对象（文件路径）</p>
+</blockquote>
+<p>　　<strong>代码示例</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter.filedialog</span><br><span class="line"></span><br><span class="line">return_value = tkinter.filedialog.asksaveasfilename(filetypes=[(<span class="string">&#x27;所有文件&#x27;</span>, [<span class="string">&#x27;.py&#x27;</span>, <span class="string">&#x27;.txt&#x27;</span>])],</span><br><span class="line">                                                    title=<span class="string">&#x27;另存为文件&#x27;</span>,</span><br><span class="line">                                                    initialdir=<span class="string">&#x27;C:/Users/小康/Desktop&#x27;</span>,</span><br><span class="line">                                                    defaultextension=<span class="string">&#x27;.txt&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(return_value), return_value)</span><br><span class="line"><span class="comment"># &lt;class &#x27;str&#x27;&gt; C:/Users/小康/Desktop/hello.txt (输入 hello)</span></span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>效果展示</strong></p>
+<p>　　<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/ff63326fbdf44eb899104a6ffbf0210d-20221014143951-90emjhd.png"></p>
+<p>　　asksaveasfilename</p>
+<h3 id="【askopenfilenames】"><a href="#【askopenfilenames】" class="headerlink" title="【askopenfilenames】"></a>【askopenfilenames】</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">askopenfilenames(*, </span><br><span class="line">                 defaultextension: <span class="built_in">str</span> | <span class="literal">None</span> = ..., </span><br><span class="line">                 filetypes: Iterable[<span class="built_in">tuple</span>[<span class="built_in">str</span>, <span class="built_in">str</span> | <span class="built_in">list</span>[<span class="built_in">str</span>] | <span class="built_in">tuple</span>[<span class="built_in">str</span>, ...]]] | <span class="literal">None</span> = ...,</span><br><span class="line">                 initialdir: StrOrBytesPath | <span class="literal">None</span> = ..., </span><br><span class="line">                 initialfile: StrOrBytesPath | <span class="literal">None</span> = ..., </span><br><span class="line">                 parent: Misc | <span class="literal">None</span> = ..., </span><br><span class="line">                 title: <span class="built_in">str</span> | <span class="literal">None</span> = ..., </span><br><span class="line">                 typevariable: StringVar | <span class="built_in">str</span> | <span class="literal">None</span> = ...)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>多个文件打开</strong></p>
+<p>【defaultextension】默认扩展名（如果没有写扩展名）</p>
+<p>【filetypes】文件类型选项（可迭代对象）</p>
+<p>格式：**[(文件说明, 文件扩展名)]** 或者 **[(文件说明, [文件扩展名1, 文件扩展名2, …])] **</p>
+<p>【initialdir】初始目录</p>
+<p>【initailfile】初始文件名（可加扩展名，也可不加，不加则使用默认扩展名）</p>
+<p>【parent】父窗口（弹窗会显示在父窗口上面，也可以空着为默认值，则直接弹出）</p>
+<p>【title】窗口标题</p>
+<p>【typevariable】类型变量</p>
+<p>【返回值】字符串对象（文件路径）</p>
+</blockquote>
+<p>　　<strong>代码示例</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter.filedialog</span><br><span class="line"></span><br><span class="line">return_value = tkinter.filedialog.askopenfilenames(filetypes=[(<span class="string">&#x27;All Files&#x27;</span>, <span class="string">&#x27;.*&#x27;</span>)],</span><br><span class="line">                                                   title=<span class="string">&#x27;打开文件&#x27;</span>,</span><br><span class="line">                                                   initialfile=<span class="string">&#x27;Python.py&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(return_value), return_value)</span><br><span class="line"><span class="comment"># &lt;class &#x27;tuple&#x27;&gt; (&#x27;D:/Python 测试/a0.py&#x27;, &#x27;D:/Python 测试/a1.py&#x27;, &#x27;D:/Python 测试/a2.py&#x27;)</span></span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>效果展示</strong></p>
+<p>　　<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/254145fa415d4a76804b98e23815d2ba-20221014143951-n1bffxu.png"></p>
+<p>　　askopenfilenames</p>
+<h3 id="【askopenfile】"><a href="#【askopenfile】" class="headerlink" title="【askopenfile】"></a>【askopenfile】</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">askopenfile(mode: <span class="built_in">str</span> = ..., </span><br><span class="line">            *, </span><br><span class="line">            defaultextension: <span class="built_in">str</span> | <span class="literal">None</span> = ..., </span><br><span class="line">            filetypes: Iterable[<span class="built_in">tuple</span>[<span class="built_in">str</span>, <span class="built_in">str</span> | <span class="built_in">list</span>[<span class="built_in">str</span>] | <span class="built_in">tuple</span>[<span class="built_in">str</span>, ...]]] | <span class="literal">None</span> = ...,</span><br><span class="line">            initialdir: StrOrBytesPath | <span class="literal">None</span> = ..., </span><br><span class="line">            initialfile: StrOrBytesPath | <span class="literal">None</span> = ..., </span><br><span class="line">            parent: Misc | <span class="literal">None</span> = ..., </span><br><span class="line">            title: <span class="built_in">str</span> | <span class="literal">None</span> = ..., </span><br><span class="line">            typevariable: StringVar | <span class="built_in">str</span> | <span class="literal">None</span> = ...)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>文件打开</strong></p>
+<p>【mode】文件打开模式（同 open 函数的 mode 参数）</p>
+<p>【defaultextension】默认扩展名（如果没有写扩展名）</p>
+<p>【filetypes】文件类型选项（可迭代对象）</p>
+<p>格式：**[(文件说明, 文件扩展名)]** 或者 **[(文件说明, [文件扩展名1, 文件扩展名2, …])] **</p>
+<p>【initialdir】初始目录</p>
+<p>【initailfile】初始文件名（可加扩展名，也可不加，不加则使用默认扩展名）</p>
+<p>【parent】父窗口（弹窗会显示在父窗口上面，也可以空着为默认值，则直接弹出）</p>
+<p>【title】窗口标题</p>
+<p>【typevariable】类型变量</p>
+<p>【返回值】<strong>文件 IO 对象</strong></p>
+</blockquote>
+<p>　　<strong>代码示例与效果展示类似于上面的 askopenfilename</strong></p>
+<h3 id="【askopenfiles】"><a href="#【askopenfiles】" class="headerlink" title="【askopenfiles】"></a>【askopenfiles】</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">askopenfiles(mode: <span class="built_in">str</span> = ..., </span><br><span class="line">             *, </span><br><span class="line">             defaultextension: <span class="built_in">str</span> | <span class="literal">None</span> = ..., </span><br><span class="line">             filetypes: Iterable[<span class="built_in">tuple</span>[<span class="built_in">str</span>, <span class="built_in">str</span> | <span class="built_in">list</span>[<span class="built_in">str</span>] | <span class="built_in">tuple</span>[<span class="built_in">str</span>, ...]]] | <span class="literal">None</span> = ...,</span><br><span class="line">             initialdir: StrOrBytesPath | <span class="literal">None</span> = ..., </span><br><span class="line">             initialfile: StrOrBytesPath | <span class="literal">None</span> = ..., </span><br><span class="line">             parent: Misc | <span class="literal">None</span> = ..., </span><br><span class="line">             title: <span class="built_in">str</span> | <span class="literal">None</span> = ..., </span><br><span class="line">             typevariable: StringVar | <span class="built_in">str</span> | <span class="literal">None</span> = ...)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>多个文件打开</strong></p>
+<p>【mode】文件打开模式（同 open 函数的 mode 参数）</p>
+<p>【defaultextension】默认扩展名（如果没有写扩展名）</p>
+<p>【filetypes】文件类型选项（可迭代对象）</p>
+<p>格式：**[(文件说明, 文件扩展名)]** 或者 **[(文件说明, [文件扩展名1, 文件扩展名2, …])] **</p>
+<p>【initialdir】初始目录</p>
+<p>【initailfile】初始文件名（可加扩展名，也可不加，不加则使用默认扩展名）</p>
+<p>【parent】父窗口（弹窗会显示在父窗口上面，也可以空着为默认值，则直接弹出）</p>
+<p>【title】窗口标题</p>
+<p>【typevariable】类型变量</p>
+<p>【返回值】<strong>元组形式的文件 IO 对象</strong></p>
+</blockquote>
+<p>　　<strong>代码示例与效果展示类似于上面的 askopenfilenames</strong></p>
+<h3 id="【asksaveasfile】"><a href="#【asksaveasfile】" class="headerlink" title="【asksaveasfile】"></a>【asksaveasfile】</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">asksaveasfile(mode: <span class="built_in">str</span> = ..., </span><br><span class="line">              *, </span><br><span class="line">              confirmoverwrite: <span class="built_in">bool</span> | <span class="literal">None</span> = ..., </span><br><span class="line">              defaultextension: <span class="built_in">str</span> | <span class="literal">None</span> = ..., </span><br><span class="line">              filetypes: Iterable[<span class="built_in">tuple</span>[<span class="built_in">str</span>, <span class="built_in">str</span> | <span class="built_in">list</span>[<span class="built_in">str</span>] | <span class="built_in">tuple</span>[<span class="built_in">str</span>, ...]]] | <span class="literal">None</span> = ...,</span><br><span class="line">              initialdir: StrOrBytesPath | <span class="literal">None</span> = ..., </span><br><span class="line">              initialfile: StrOrBytesPath | <span class="literal">None</span> = ..., </span><br><span class="line">              parent: Misc | <span class="literal">None</span> = ..., </span><br><span class="line">              title: <span class="built_in">str</span> | <span class="literal">None</span> = ..., </span><br><span class="line">              typevariable: StringVar | <span class="built_in">str</span> | <span class="literal">None</span> = ...)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>文件另存为</strong></p>
+<p>【mode】文件打开模式（同 open 函数的 mode 参数）</p>
+<p>【confirmoverwrite】是否覆盖重名（原）文件（默认为True，即“已存在”会询问是否覆盖）</p>
+<p>【defaultextension】默认扩展名（如果没有写扩展名）</p>
+<p>【filetypes】文件类型选项（可迭代对象）</p>
+<p>格式：**[(文件说明, 文件扩展名)]** 或者 **[(文件说明, [文件扩展名1, 文件扩展名2, …])] **</p>
+<p>【initialdir】初始目录</p>
+<p>【initialfile】初始文件名（可加扩展名，也可不加，不加则使用默认扩展名）</p>
+<p>【parent】父窗口（弹窗会显示在父窗口上面，也可以空着为默认值，则直接弹出）</p>
+<p>【title】窗口标题</p>
+<p>【typevariable】类型变量</p>
+<p>【返回值】<strong>文件 IO 对象</strong></p>
+</blockquote>
+<p>　　<strong>代码示例与效果展示类似于上面的 asksaveasfilename</strong></p>
+<h3 id="【askdirectory】"><a href="#【askdirectory】" class="headerlink" title="【askdirectory】"></a>【askdirectory】</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">askdirectory(*, </span><br><span class="line">             initialdir: StrOrBytesPath | <span class="literal">None</span> = ..., </span><br><span class="line">             mustexist: <span class="built_in">bool</span> | <span class="literal">None</span> = ..., </span><br><span class="line">             parent: Misc | <span class="literal">None</span> = ..., </span><br><span class="line">             title: <span class="built_in">str</span> | <span class="literal">None</span> = ...)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>选择文件夹</strong></p>
+<p>【initialdir】初始目录</p>
+<p>【mustexist】是否必须为现有目录</p>
+<p>【parent】父窗口（弹窗会显示在父窗口上面，也可以空着为默认值，则直接弹出）</p>
+<p>【title】窗口标题</p>
+<p>【返回值】字符串对象（文件夹路径）</p>
+</blockquote>
+<p>　　<strong>代码示例</strong></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter.filedialog</span><br><span class="line"></span><br><span class="line">return_value = tkinter.filedialog.askdirectory()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(return_value), return_value)</span><br><span class="line"><span class="comment"># &lt;class &#x27;str&#x27;&gt; C:/Users/小康/Desktop</span></span><br></pre></td></tr></table></figure>
+
+<p>　　<strong>效果展示</strong></p>
+<p>　　<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/fd13cc0f3ed149da94aba7d42112cf40-20221014143951-ls1yrhn.png"></p>
+<p>　　askdirectory</p>
+
+  
+
+
+  </article>
+  
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">回顾上一篇</div><a href="/Engineering/python/Matplotlib.html">matplotlib</a></div><div class="item" id="next"></div></section></div>
+
+  
+
+  <div class='related-wrap md-text reveal' id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>评论区仅供交流~</p>
+
+    </section>
+    <section class='body cmt-body giscus'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="giscus" data-repo="aleryxiao/aleryxiao.github.io" data-repo-id="R_kgDOIdw0jw" data-category="Announcements" data-category-id="DIC_kwDOIdw0j84CTXeH" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous"></div>
+
+    </section>
+  </div>
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客</span><a href="/">近期</a><a href="/categories">分类</a><a href="/tags">标签</a><a href="/">归档</a></div><div class="sitemap-group"><span class="fs14">整理</span><a href="/wiki">文件夹</a></div><div class="sitemap-group"><span class="fs14">社交</span><a href="/dynamic">动态</a><a href="/friend">友链</a><a href="/guestbook">留言板</a></div><div class="sitemap-group"><span class="fs14">更多</span><a href="/about">关于</a><a target="_blank" rel="noopener" href="https://github.com/aleryxiao">GitHub</a></div></div><div class="text"><p>本站由 <a target="_blank" rel="noopener" href="https://space.bilibili.com/19610138">@AleryXiao</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.18.5';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.18.5';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadJS() {
+    const els = document.querySelectorAll("#comments #giscus");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://giscus.app/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    loadJS();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.18.5">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>python：Vscode配置 - 極楽浄土</title>
+
+  
+    <meta name="description" content="主题Ayu    很多颜色 Dainty Github Theme    黑白两套 Slack Theme Winter is Coming Theme    深蓝 解决终端中文乱码在设置settings.json添加以下代码    默认每次启动终端 发出指令让终端以Chcp65001编码运行 &quot;terminal.integrated.profiles.windows&quot;: &amp;#">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vscode配置">
+<meta property="og:url" content="https://aleryxiao.github.io/Engineering/python/Vscode%E9%85%8D%E7%BD%AE.html">
+<meta property="og:site_name" content="極楽浄土">
+<meta property="og:description" content="主题Ayu    很多颜色 Dainty Github Theme    黑白两套 Slack Theme Winter is Coming Theme    深蓝 解决终端中文乱码在设置settings.json添加以下代码    默认每次启动终端 发出指令让终端以Chcp65001编码运行 &quot;terminal.integrated.profiles.windows&quot;: &amp;#">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-03T04:52:08.000Z">
+<meta property="article:modified_time" content="2023-01-03T04:37:24.727Z">
+<meta property="article:author" content="AleryXiao">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="極楽浄土" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="/site_assets/favicon.jpg">
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='wiki'>
+    
+
+  
+
+
+
+
+<div class="widgets"><widget class="widget-wrapper logo-wrap wiki"><div class="widget-body"><a style="filter: grayscale(100%)" class="wiki-home cap" href="/"><svg aria-hidden="true" viewBox="0 0 16 16" width="1rem" height="1rem" fill="currentColor"><path fill-rule="evenodd" d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"></path></svg>所有项目</a><a class="title" href="/Engineering/python/index.html"><div class="main" ff="title">python</div><div class="sub normal cap">about python</div><div class="sub hover cap" style="opacity:0"> @AleryXiao</div></a></div></widget>
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/Engineering/python/" placeholder="在 /Engineering/python/ 中搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+
+
+<widget class="widget-wrapper toc multi" id="data-toc"><div class="widget-header cap dis-select"><span class="name">Set Environment</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/index.html#start"><span class="toc-text">Index</span></a></div><div class="doc-tree active"><a class="doc-tree-link active" href="/Engineering/python/Vscode%E9%85%8D%E7%BD%AE.html"><span class="toc-text">Vscode配置</span></a><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98"><span class="toc-text">主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E7%BB%88%E7%AB%AF%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="toc-text">解决终端中文乱码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vscode%E9%85%8D%E7%BD%AEcpp%E7%8E%AF%E5%A2%83"><span class="toc-text">Vscode配置cpp环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BD%E5%B9%B6%E5%AE%89%E8%A3%85cpp%E7%BC%96%E8%AF%91%E5%99%A8minGW"><span class="toc-text">1. 下载并安装cpp编译器minGW</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BE%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text">2.设置环境变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%B8%8B%E8%BD%BDvscode"><span class="toc-text">3.下载vscode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%85%8D%E7%BD%AEgoogle-format"><span class="toc-text">4. *配置google format</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python"><span class="toc-text">Python</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Pip-%E6%9B%B4%E6%8D%A2%E9%95%9C%E5%83%8F%E6%BA%90"><span class="toc-text">Pip 更换镜像源</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CMD%E6%96%B9%E6%B3%95"><span class="toc-text">CMD方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%87%E7%94%A8%E6%96%B9%E6%B3%95%EF%BC%88%E6%96%B0%E5%BB%BAini%EF%BC%89"><span class="toc-text">备用方法（新建ini）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5%E9%85%8D%E7%BD%AE"><span class="toc-text">用户代码片段配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-text">变量</span></a></li></ol></li></ol></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/PipenV+Pyinstaller.html"><span class="toc-text">PipenV+Pyinstaller</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/Xpath.html"><span class="toc-text">Xpath</span></a></div></div><div class="widget-header cap dis-select"><span class="name">Std Grammar</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/f-string.html"><span class="toc-text">f-string</span></a></div></div><div class="widget-header cap dis-select"><span class="name">Ocr</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/CUDA%20&%20pip.html"><span class="toc-text">CUDA & pip</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/EasyOCR.html"><span class="toc-text">EasyOCR</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/%E8%85%BE%E8%AE%AF%E4%BA%91OCR.html"><span class="toc-text">腾讯云OCR</span></a></div></div><div class="widget-header cap dis-select"><span class="name">库使用</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/Matplotlib.html"><span class="toc-text">matplotlib</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/Tkinter.html"><span class="toc-text">Tkinter</span></a></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+  
+  
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" id="home" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" id="menu" href="/wiki/">项目</a><span class="sep"></span><a class="cap breadcrumb" id="proj" href="/Engineering/python/index.html">python</a></div><div id="post-meta">更新于&nbsp;<time datetime="2023-01-03T04:37:24.727Z">2023-01-03</time></div></div>
+
+  <article class='md-text content wiki'>
+  <h1 class="article-title"><span>Vscode配置</span></h1>
+  <h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><p>Ayu<br>    很多颜色</p>
+<p>Dainty</p>
+<p>Github Theme<br>    黑白两套</p>
+<p>Slack Theme</p>
+<p>Winter is Coming Theme<br>    深蓝</p>
+<h2 id="解决终端中文乱码"><a href="#解决终端中文乱码" class="headerlink" title="解决终端中文乱码"></a>解决终端中文乱码</h2><p>在设置settings.json添加以下代码<br>    默认每次启动终端 发出指令让终端以Chcp65001编码运行</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;terminal.integrated.profiles.windows&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;PowerShell&quot;</span>: &#123;</span><br><span class="line">          <span class="string">&quot;source&quot;</span>: <span class="string">&quot;PowerShell&quot;</span>,</span><br><span class="line">          <span class="string">&quot;overrideName&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">          <span class="string">&quot;args&quot;</span>: [<span class="string">&quot;-NoExit&quot;</span>, <span class="string">&quot;/c&quot;</span>, <span class="string">&quot;chcp 65001&quot;</span>],</span><br><span class="line">          <span class="string">&quot;icon&quot;</span>: <span class="string">&quot;terminal-powershell&quot;</span>,</span><br><span class="line">          <span class="string">&quot;env&quot;</span>: &#123;</span><br><span class="line">            <span class="string">&quot;TEST_VAR&quot;</span>: <span class="string">&quot;value&quot;</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">    <span class="string">&quot;terminal.integrated.defaultProfile.windows&quot;</span>: <span class="string">&quot;PowerShell&quot;</span>,</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Vscode配置cpp环境"><a href="#Vscode配置cpp环境" class="headerlink" title="Vscode配置cpp环境"></a>Vscode配置cpp环境</h2><h3 id="1-下载并安装cpp编译器minGW"><a href="#1-下载并安装cpp编译器minGW" class="headerlink" title="1. 下载并安装cpp编译器minGW"></a>1. 下载并安装cpp编译器minGW</h3><p>打开<a target="_blank" rel="noopener" href="https://www.mingw-w64.org/">minGW官网</a>，进入 SourceForge 中的 MinGW-w64 下载页面。<br>关于安装：<br>   *关于SEH&amp;SJLJ：<br>           seh 是新发明的，而 sjlj 则是古老的。seh 性能比较好，但不支持 32位。 sjlj 稳定性好，支持 32位。<br>   *关于Dwarf&amp;Sjlj：<br>        选择了 32位 后，则可以用 dwarf 和 sjlj 两种异常处理模型。同样的，dwarf 的性能要优于 sjlj ，可以它不支持 64位 。建议选择 dwarf。</p>
+<h3 id="2-设置环境变量"><a href="#2-设置环境变量" class="headerlink" title="2.设置环境变量"></a>2.设置环境变量</h3><ol>
+<li>右键此电脑-属性-高级系统设置-高级-环境变量-用户变量-双击Path-新建</li>
+<li>插入刚才minGW下载到本地的文件目录：C:\\Program Files (x86)\mingw-w64\i686-8.1.0-posix-dwarf-rt_v6-rev0\mingw32\bin；设置完环境变量后需要重启。</li>
+<li>验证环境变量是否设置成功<br> 打开命令行窗口并输入 gcc -v</li>
+</ol>
+<h3 id="3-下载vscode"><a href="#3-下载vscode" class="headerlink" title="3.下载vscode"></a>3.下载vscode</h3><ol>
+<li>打开vscode官网</li>
+<li>下载vscode</li>
+<li>打开vscode并安装简体中文、c&#x2F;c++插件</li>
+<li>在左上角的资源管理器中打开一个文件夹用来存放cpp代码<br> 新建一个“hello world.cpp”文件（注意文件扩展名也算作新建文件内容的一部分。）</li>
+<li>按下F5调试<br> 选择c++（GDB&#x2F;LLDB）和g++.exe，然后vscode编译器就会帮你配置好运行cpp所需要的.vscode文件夹，这意味着在这个文件夹下编写的cpp文件有了一个格式的设置文件，你可以通过修改.json的值来修改这个文件夹下所有的cpp文件的各种参数。</li>
+<li>重新运行我们刚才编写的hello world.cpp文件<br> 底下的vscode自带的终端就会显示出结果。</li>
+</ol>
+<h3 id="4-配置google-format"><a href="#4-配置google-format" class="headerlink" title="4. *配置google format"></a>4. *配置google format</h3><p>设置-Clang_Format</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123; BasedOnStyle: Google, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Attach, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4 &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>安装，勾选添加到Path</p>
+<p>检查是否安装成功：<br>    1、打开cmd，输入python，点击回车。<br>    2、输入import this，欣赏下python之禅。  </p>
+<p>解决完之后，就可以输入：<br>    1、在cmd输入 pip list 检查是否已存在需要的包<br>    2、输入 pip install flake8 下载安装flake8<br>    3、输入 pip install yapf 下载安装yapf  </p>
+<h3 id="Pip-更换镜像源"><a href="#Pip-更换镜像源" class="headerlink" title="Pip 更换镜像源"></a>Pip 更换镜像源</h3><h4 id="CMD方法"><a href="#CMD方法" class="headerlink" title="CMD方法"></a>CMD方法</h4><p>升级 pip 到最新的版本 (&gt;&#x3D;10.0.0) 后进行配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python -m pip install --upgrade pip</span><br><span class="line">pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br></pre></td></tr></table></figure>
+
+<p>如果您到 pip 默认源的网络连接较差，临时使用本镜像站来升级 pip：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip</span><br></pre></td></tr></table></figure>
+
+<h4 id="备用方法（新建ini）"><a href="#备用方法（新建ini）" class="headerlink" title="备用方法（新建ini）"></a>备用方法（新建ini）</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[global]</span><br><span class="line">trusted-host=mirrors.aliyun.com</span><br><span class="line">index-url=http://mirrors.aliyun.com/pypi/simple/</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="用户代码片段配置"><a href="#用户代码片段配置" class="headerlink" title="用户代码片段配置"></a>用户代码片段配置</h2><p><a target="_blank" rel="noopener" href="https://99cc.vip/public/tools/vscode_snippet/index.html">VScode代码配置段转换器</a></p>
+<p>C++</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;head&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;prefix&quot;</span><span class="punctuation">:</span> <span class="string">&quot;head&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;body&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">		<span class="string">&quot;/*&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="string">&quot;Title: $1&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="string">&quot;Author: AleryXiao&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="string">&quot;Date: $&#123;CURRENT_YEAR&#125;.$&#123;CURRENT_MONTH&#125;.$&#123;CURRENT_DATE&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="string">&quot;Theme: $2&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="string">&quot;Content: &quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="string">&quot;$3&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="string">&quot;*/&quot;</span></span><br><span class="line">	<span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;head&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>Python</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;head&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;prefix&quot;</span><span class="punctuation">:</span> <span class="string">&quot;head&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;body&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">		<span class="string">&quot;&#x27;&#x27;&#x27;&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="string">&quot;Title: $1&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="string">&quot;Author: AleryXiao&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="string">&quot;Date: $&#123;CURRENT_YEAR&#125;.$&#123;CURRENT_MONTH&#125;.$&#123;CURRENT_DATE&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="string">&quot;Theme: $2&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="string">&quot;Content: &quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="string">&quot;$3&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="string">&quot;&#x27;&#x27;&#x27;&quot;</span></span><br><span class="line">	<span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;head&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>使用${name:default}，您可以插入变量的值。如果未设置变量，则插入其默认值或空字符串。<br>当变量未知（即未定义其名称）时，将插入变量的名称并将其转换为占位</p>
+<p>常用变量<br>    TM_CURRENT_LINE当前行的内容<br>    TM_FILENAME当前文档的文件名<br>    TM_FILENAME_BASE当前文档的文件名，不带扩展名<br>    CLIPBOARD剪贴板的内容</p>
+<p>&#x3D;&#x3D;日期和时间&#x3D;&#x3D;：<br>    CURRENT_YEAR本年度<br>    CURRENT_YEAR_SHORT本年度的最后两位数<br>    CURRENT_MONTH两位数的月份（例如“02”）<br>    CURRENT_MONTH_NAME_SHORT月份的简称（例如“Jul”）<br>    CURRENT_DATE两位数的月份日期（例如“08”）<br>    CURRENT_SECONDS_UNIX自 Unix 纪元以来的秒数  </p>
+
+  
+
+
+  </article>
+  
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">回顾上一篇</div><a href="/Engineering/python/index.html">Index</a></div><div class="item" id="next"><div class="note">接下来阅读</div><a href="/Engineering/python/PipenV+Pyinstaller.html">PipenV+Pyinstaller</a></div></section></div>
+
+  
+
+  <div class='related-wrap md-text reveal' id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>评论区仅供交流~</p>
+
+    </section>
+    <section class='body cmt-body giscus'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="giscus" data-repo="aleryxiao/aleryxiao.github.io" data-repo-id="R_kgDOIdw0jw" data-category="Announcements" data-category-id="DIC_kwDOIdw0j84CTXeH" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous"></div>
+
+    </section>
+  </div>
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客</span><a href="/">近期</a><a href="/categories">分类</a><a href="/tags">标签</a><a href="/">归档</a></div><div class="sitemap-group"><span class="fs14">整理</span><a href="/wiki">文件夹</a></div><div class="sitemap-group"><span class="fs14">社交</span><a href="/dynamic">动态</a><a href="/friend">友链</a><a href="/guestbook">留言板</a></div><div class="sitemap-group"><span class="fs14">更多</span><a href="/about">关于</a><a target="_blank" rel="noopener" href="https://github.com/aleryxiao">GitHub</a></div></div><div class="text"><p>本站由 <a target="_blank" rel="noopener" href="https://space.bilibili.com/19610138">@AleryXiao</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.18.5';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.18.5';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadJS() {
+    const els = document.querySelectorAll("#comments #giscus");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://giscus.app/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    loadJS();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

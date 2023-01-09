@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang='zh-CN'>
+
+<head>
+  <meta name="generator" content="Hexo 6.3.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.18.5">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>python：EasyOCR - 極楽浄土</title>
+
+  
+    <meta name="description" content="摘要EasyOCR 是一个python版的文字识别工具。目前支持80中语言的识别。   安装安装稳定版 pip install easyocr  安装最新版本： pip install git+https:&#x2F;&#x2F;github.com&#x2F;JaidedAI&#x2F;EasyOCR.git  安装完成后，可以通过easyocr.version  查看版本号： import easyocrprint(easyocr.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="EasyOCR">
+<meta property="og:url" content="https://aleryxiao.github.io/Engineering/python/EasyOCR.html">
+<meta property="og:site_name" content="極楽浄土">
+<meta property="og:description" content="摘要EasyOCR 是一个python版的文字识别工具。目前支持80中语言的识别。   安装安装稳定版 pip install easyocr  安装最新版本： pip install git+https:&#x2F;&#x2F;github.com&#x2F;JaidedAI&#x2F;EasyOCR.git  安装完成后，可以通过easyocr.version  查看版本号： import easyocrprint(easyocr.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://aleryxiao.github.io/assets/61bfe4e67ec7498b81f0cf82812d3a67-20221018022604-1zbz6zr.png">
+<meta property="og:image" content="https://aleryxiao.github.io/assets/009770ec500e4053b753e5fb5b28acfe-20221018022604-bdickuh.png">
+<meta property="og:image" content="https://aleryxiao.github.io/assets/1fc8157d099d4eacbd5cf425deae3b16-20221018022604-x5hmayd.jpeg">
+<meta property="article:published_time" content="2023-01-03T04:33:21.156Z">
+<meta property="article:modified_time" content="2023-01-03T04:33:21.156Z">
+<meta property="article:author" content="AleryXiao">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://aleryxiao.github.io/assets/61bfe4e67ec7498b81f0cf82812d3a67-20221018022604-1zbz6zr.png">
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/atom.xml" title="極楽浄土" type="application/atom+xml">
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="/site_assets/favicon.jpg">
+  
+
+  
+
+  
+
+
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='wiki'>
+    
+
+  
+
+
+
+
+<div class="widgets"><widget class="widget-wrapper logo-wrap wiki"><div class="widget-body"><a style="filter: grayscale(100%)" class="wiki-home cap" href="/"><svg aria-hidden="true" viewBox="0 0 16 16" width="1rem" height="1rem" fill="currentColor"><path fill-rule="evenodd" d="M7.78 12.53a.75.75 0 01-1.06 0L2.47 8.28a.75.75 0 010-1.06l4.25-4.25a.75.75 0 011.06 1.06L4.81 7h7.44a.75.75 0 010 1.5H4.81l2.97 2.97a.75.75 0 010 1.06z"></path></svg>所有项目</a><a class="title" href="/Engineering/python/index.html"><div class="main" ff="title">python</div><div class="sub normal cap">about python</div><div class="sub hover cap" style="opacity:0"> @AleryXiao</div></a></div></widget>
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/Engineering/python/" placeholder="在 /Engineering/python/ 中搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div></div></widget>
+
+
+
+
+<widget class="widget-wrapper toc multi" id="data-toc"><div class="widget-header cap dis-select"><span class="name">Set Environment</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/index.html#start"><span class="toc-text">Index</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/Vscode%E9%85%8D%E7%BD%AE.html"><span class="toc-text">Vscode配置</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/PipenV+Pyinstaller.html"><span class="toc-text">PipenV+Pyinstaller</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/Xpath.html"><span class="toc-text">Xpath</span></a></div></div><div class="widget-header cap dis-select"><span class="name">Std Grammar</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/f-string.html"><span class="toc-text">f-string</span></a></div></div><div class="widget-header cap dis-select"><span class="name">Ocr</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/CUDA%20&%20pip.html"><span class="toc-text">CUDA & pip</span></a></div><div class="doc-tree active"><a class="doc-tree-link active" href="/Engineering/python/EasyOCR.html"><span class="toc-text">EasyOCR</span></a><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E8%AF%A6%E8%A7%A3"><span class="toc-text">方法详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reader-%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3%EF%BC%9A"><span class="toc-text">Reader()参数详解：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#readtext-%EF%BC%89%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3"><span class="toc-text">readtext(）参数详解</span></a></li></ol></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/%E8%85%BE%E8%AE%AF%E4%BA%91OCR.html"><span class="toc-text">腾讯云OCR</span></a></div></div><div class="widget-header cap dis-select"><span class="name">库使用</span></div><div class="widget-body fs14"><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/Matplotlib.html"><span class="toc-text">matplotlib</span></a></div><div class="doc-tree"><a class="doc-tree-link" href="/Engineering/python/Tkinter.html"><span class="toc-text">Tkinter</span></a></div></div></widget>
+
+
+
+
+</div>
+
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+  
+  
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" id="home" href="/">主页</a><span class="sep"></span><a class="cap breadcrumb" id="menu" href="/wiki/">项目</a><span class="sep"></span><a class="cap breadcrumb" id="proj" href="/Engineering/python/index.html">python</a></div><div id="post-meta">更新于&nbsp;<time datetime="2023-01-03T04:33:21.156Z">2023-01-03</time></div></div>
+
+  <article class='md-text content wiki'>
+  <h1 class="article-title"><span>EasyOCR</span></h1>
+  <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>EasyOCR 是一个python版的文字识别工具。目前支持80中语言的识别。  </p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>安装稳定版</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install easyocr</span><br></pre></td></tr></table></figure>
+
+<p>安装最新版本：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install git+https://github.com/JaidedAI/EasyOCR.git</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，可以通过easyocr.<strong>version</strong>  查看版本号：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> easyocr</span><br><span class="line"><span class="built_in">print</span>(easyocr.__version__)</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>第一次安装使用，easyocr会下载默认模型。等待的时间比较长，而且容易失败。  如果一直失败，可以采用另一种方式，登录到<a target="_blank" rel="noopener" href="https://www.jaided.ai/easyocr/modelhub/">网站</a>下载模型。  </p>
+<p>下载检测器模型<br> <img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/../../../assets/61bfe4e67ec7498b81f0cf82812d3a67-20221018022604-1zbz6zr.png" alt="在这里插入图片描述"><br>下载识别器模型<br> <img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/../../../assets/009770ec500e4053b753e5fb5b28acfe-20221018022604-bdickuh.png" alt="在这里插入图片描述"><br> 将下载的模型文件解压后拷贝到当前登录的用户目录的.EasyOCR\model文件夹下，Windows系统为：C:\Users\用户名.EasyOCR\model。<br> 识别模型（语言包）的文件名称和后面看到的语言类型并不是完全对应的，ch_sim对应简体中文(zh_sim_g2)，en对应英文(english_g2)。</p>
+<p>调用方式</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> easyocr</span><br><span class="line">reader = easyocr.Reader([<span class="string">&#x27;ch_sim&#x27;</span>,<span class="string">&#x27;en&#x27;</span>]) <span class="comment"># this needs to run only once to load the model into memory</span></span><br><span class="line">result = reader.readtext(<span class="string">&#x27;chinese.jpg&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>　　<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/1fc8157d099d4eacbd5cf425deae3b16-20221018022604-x5hmayd.jpeg" alt="在这里插入图片描述"></p>
+<p>输出结果：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">[([[<span class="number">189</span>, <span class="number">75</span>], [<span class="number">469</span>, <span class="number">75</span>], [<span class="number">469</span>, <span class="number">165</span>], [<span class="number">189</span>, <span class="number">165</span>]], <span class="string">&#x27;愚园路&#x27;</span>, <span class="number">0.3754989504814148</span>),</span><br><span class="line"> ([[<span class="number">86</span>, <span class="number">80</span>], [<span class="number">134</span>, <span class="number">80</span>], [<span class="number">134</span>, <span class="number">128</span>], [<span class="number">86</span>, <span class="number">128</span>]], <span class="string">&#x27;西&#x27;</span>, <span class="number">0.40452659130096436</span>),</span><br><span class="line"> ([[<span class="number">517</span>, <span class="number">81</span>], [<span class="number">565</span>, <span class="number">81</span>], [<span class="number">565</span>, <span class="number">123</span>], [<span class="number">517</span>, <span class="number">123</span>]], <span class="string">&#x27;东&#x27;</span>, <span class="number">0.9989598989486694</span>),</span><br><span class="line"> ([[<span class="number">78</span>, <span class="number">126</span>], [<span class="number">136</span>, <span class="number">126</span>], [<span class="number">136</span>, <span class="number">156</span>], [<span class="number">78</span>, <span class="number">156</span>]], <span class="string">&#x27;315&#x27;</span>, <span class="number">0.8125889301300049</span>),</span><br><span class="line"> ([[<span class="number">514</span>, <span class="number">126</span>], [<span class="number">574</span>, <span class="number">126</span>], [<span class="number">574</span>, <span class="number">156</span>], [<span class="number">514</span>, <span class="number">156</span>]], <span class="string">&#x27;309&#x27;</span>, <span class="number">0.4971577227115631</span>),</span><br><span class="line"> ([[<span class="number">226</span>, <span class="number">170</span>], [<span class="number">414</span>, <span class="number">170</span>], [<span class="number">414</span>, <span class="number">220</span>], [<span class="number">226</span>, <span class="number">220</span>]], <span class="string">&#x27;Yuyuan Rd.&#x27;</span>, <span class="number">0.8261902332305908</span>),</span><br><span class="line"> ([[<span class="number">79</span>, <span class="number">173</span>], [<span class="number">125</span>, <span class="number">173</span>], [<span class="number">125</span>, <span class="number">213</span>], [<span class="number">79</span>, <span class="number">213</span>]], <span class="string">&#x27;W&#x27;</span>, <span class="number">0.9848111271858215</span>),</span><br><span class="line"> ([[<span class="number">529</span>, <span class="number">173</span>], [<span class="number">569</span>, <span class="number">173</span>], [<span class="number">569</span>, <span class="number">213</span>], [<span class="number">529</span>, <span class="number">213</span>]], <span class="string">&#x27;E&#x27;</span>, <span class="number">0.8405593633651733</span>)]</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="方法详解"><a href="#方法详解" class="headerlink" title="方法详解"></a>方法详解</h2><h2 id="Reader-参数详解："><a href="#Reader-参数详解：" class="headerlink" title="Reader()参数详解："></a>Reader()参数详解：</h2><ul>
+<li><p>lang_list (list)：识别语言代码，比如[‘ch_sim’,’en’]分别表示简体中文和英文。</p>
+</li>
+<li><p>gpu (bool, string, default &#x3D; True) ：是否使能GPU，只有安装了GPU版本才有效。</p>
+</li>
+<li><p>model_storage_directory (string, default &#x3D; None) ：模型存储位置，依次查找系统变量EASYOCR_MODULE_PATH (preferred)、MODULE_PATH (if defined)表示的路径或者~&#x2F;.EasyOCR&#x2F;路径。</p>
+</li>
+<li><p>download_enabled (bool, default &#x3D; True)：如果没有对应模型文件时，自动下载模型。</p>
+</li>
+<li><p>user_network_directory (bool, default &#x3D; None) ：用户自定义识别网络的路径，如果没有指明，则在MODULE_PATH + ‘&#x2F;user_network’ (~&#x2F;.EasyOCR&#x2F;user_network)目录中查找。</p>
+</li>
+<li><p>recog_network (string, default &#x3D; ‘standard’) ：替代标准模型，使用自定义的识别网络。</p>
+</li>
+<li><p>detector (bool, default &#x3D; True) ：是否加载检测模型。</p>
+</li>
+<li><p>recognizer (bool, default &#x3D; True) ：是否加载识别模型。</p>
+<h2 id="readtext-）参数详解"><a href="#readtext-）参数详解" class="headerlink" title="readtext(）参数详解"></a>readtext(）参数详解</h2></li>
+<li><p>image (string, numpy array, byte) ： 输入图像；</p>
+</li>
+<li><p>decoder (string, default &#x3D; ‘greedy’)：选项有 ‘greedy’、‘beamsearch’ 和 ‘wordbeamsearch’；</p>
+</li>
+<li><p>beamWidth (int, default &#x3D; 5) ： 当解码器 &#x3D; ‘beamsearch’ 或 ‘wordbeamsearch’ 时要保留多少光束；</p>
+</li>
+<li><p>batch_size (int, default &#x3D; 1) ： batch_size&gt;1 将使 EasyOCR 更快但使用更多内存；</p>
+</li>
+<li><p>worker (int, default &#x3D; 0) ： 数据加载器中使用的编号线程；</p>
+</li>
+<li><p>allowlist (string) ： 强制 EasyOCR 只识别字符的子集。对特定问题有用（例如车牌等）；</p>
+</li>
+<li><p>blocklist (string) ： 字符的块子集。如果给定了允许列表，则此参数将被忽略。</p>
+</li>
+<li><p>detail (int, default &#x3D; 1)： 将此设置为 0 以进行简单输出；</p>
+</li>
+<li><p>paragraph (bool, default &#x3D; False)：将结果合并到段落中；</p>
+</li>
+<li><p>min_size (int, default &#x3D; 10) ： 过滤文本框小于最小值（以像素为单位）；</p>
+</li>
+<li><p>rotation_info (list, default &#x3D; None) ： 允许 EasyOCR 旋转每个文本框并返回具有最佳置信度分数的文本框。符合条件的值为 90、180 和 270。例如，对所有可能的文本方向尝试 [90, 180 ,270]。</p>
+</li>
+<li><p>contrast_ths (float, default &#x3D; 0.1) ： 对比度低于此值的文本框将被传入模型 2 次。首先是原始图像，其次是对比度调整为“adjust_contrast”值。结果将返回具有更高置信度的那个；</p>
+</li>
+<li><p>adjust_contrast (float, default &#x3D; 0.5) ： 低对比度文本框的目标对比度级别。</p>
+</li>
+<li><p>text_threshold (float, default &#x3D; 0.7) ： 文本置信度阈值</p>
+</li>
+<li><p>low_text (float, default &#x3D; 0.4) ： 文本下限分数</p>
+</li>
+<li><p>link_threshold (float, default &#x3D; 0.4) ： 链接置信度阈值</p>
+</li>
+<li><p>canvas_size (int, default &#x3D; 2560) ：最大图像尺寸。大于此值的图像将被缩小。</p>
+</li>
+<li><p>mag_ratio (float, default &#x3D; 1) ：图像放大率</p>
+</li>
+<li><p>slope_ths (float, default &#x3D; 0.1) - 考虑合并的最大斜率 (delta y&#x2F;delta x)。低值意味着不会合并平铺框。</p>
+</li>
+<li><p>ycenter_ths (float, default &#x3D; 0.5) - y 方向的最大偏移。不应该合并不同级别的框。</p>
+</li>
+<li><p>height_ths (float, default &#x3D; 0.5) - 盒子高度的最大差异。不应合并文本大小非常不同的框。</p>
+</li>
+<li><p>width_ths (float, default &#x3D; 0.5) - 合并框的最大水平距离。</p>
+</li>
+<li><p>add_margin (float, default &#x3D; 0.1) - 将边界框向所有方向扩展某个值。这对于具有复杂脚本的语言（例如泰语）很重要。</p>
+</li>
+<li><p>x_ths (float, default &#x3D; 1.0) - 当段落&#x3D;True 时合并文本框的最大水平距离。</p>
+</li>
+<li><p>y_ths (float, default &#x3D; 0.5) - 当段落 &#x3D; True 时合并文本框的最大垂直距离。</p>
+</li>
+</ul>
+
+  
+
+
+  </article>
+  
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">回顾上一篇</div><a href="/Engineering/python/CUDA%20&%20pip.html">CUDA & pip</a></div><div class="item" id="next"><div class="note">接下来阅读</div><a href="/Engineering/python/%E8%85%BE%E8%AE%AF%E4%BA%91OCR.html">腾讯云OCR</a></div></section></div>
+
+  
+
+  <div class='related-wrap md-text reveal' id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>评论区仅供交流~</p>
+
+    </section>
+    <section class='body cmt-body giscus'>
+      
+
+<svg class="loading" style="vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg>
+
+<div id="giscus" data-repo="aleryxiao/aleryxiao.github.io" data-repo-id="R_kgDOIdw0jw" data-category="Announcements" data-category-id="DIC_kwDOIdw0j84CTXeH" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous"></div>
+
+    </section>
+  </div>
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">博客</span><a href="/">近期</a><a href="/categories">分类</a><a href="/tags">标签</a><a href="/">归档</a></div><div class="sitemap-group"><span class="fs14">整理</span><a href="/wiki">文件夹</a></div><div class="sitemap-group"><span class="fs14">社交</span><a href="/dynamic">动态</a><a href="/friend">友链</a><a href="/guestbook">留言板</a></div><div class="sitemap-group"><span class="fs14">更多</span><a href="/about">关于</a><a target="_blank" rel="noopener" href="https://github.com/aleryxiao">GitHub</a></div></div><div class="text"><p>本站由 <a target="_blank" rel="noopener" href="https://space.bilibili.com/19610138">@AleryXiao</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.18.5';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.18.5';
+  stellar.config = {
+    date_suffix: {
+      just: '刚刚',
+      min: '分钟前',
+      hour: '小时前',
+      day: '天前',
+      month: '个月前',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+  <script>
+  function loadJS() {
+    const els = document.querySelectorAll("#comments #giscus");
+    if (els.length === 0) return;
+    els.forEach((el, i) => {
+      try {
+        el.innerHTML = '';
+      } catch (error) {
+        console.log(error);
+      }
+      var script = document.createElement('script');
+      script.src = 'https://giscus.app/client.js';
+      script.async = true;
+      for (let key of Object.keys(el.attributes)) {
+        let attr = el.attributes[key];
+        if (['class', 'id'].includes(attr.name) === false) {
+          script.setAttribute(attr.name, attr.value);
+        }
+      }
+      el.appendChild(script);
+    });
+  }
+  window.addEventListener('DOMContentLoaded', (event) => {
+    loadJS();
+  });
+</script>
+
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
